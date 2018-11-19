@@ -23,9 +23,9 @@ public class NurseServiceImpl implements NurseService{
 	private BaseDaoI dao;
 
 	@Override
-	public List<Nurse> get(Map<String, Object> map) {
-		String sql="from Nurse";
-		List<Nurse> list = dao.find(sql);
+	public List<Map<String, Object>> get(Map<String, Object> map) {
+		String sql="SELECT i.*,b.name uname FROM nurse i left join geracomiumdb.user b on i.userId=b.id";
+		List<Map<String, Object>> list = (List<Map<String, Object>>) dao.findBySql(sql);
 		map.put("data", list);
 		return list;
 	}

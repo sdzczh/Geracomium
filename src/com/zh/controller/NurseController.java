@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.alibaba.fastjson.JSON;
 import com.zh.base.BaseController;
 import com.zh.pojo.Admin;
+import com.zh.pojo.Bed;
 import com.zh.pojo.Nurse;
 import com.zh.pojo.User;
 import com.zh.service.AdminService;
@@ -30,6 +31,8 @@ public class NurseController extends BaseController {
 
 	@Autowired
 	NurseService nurseService;
+	@Autowired
+	UserService userService;
 
 	/**
 	 * 查询
@@ -60,7 +63,11 @@ public class NurseController extends BaseController {
 	 */
 	@ResponseBody
 	@RequestMapping("add")
-	public String add(Nurse nurse) {
+	public String add(Nurse nurse, Map<String, Object> map) {
+		List<User> list = userService.getById(nurse.getUserId(), map);
+		if(list == null || list.size() == 0){
+			return "false";
+		}
 		nurseService.add(nurse);
 		return "true";
 	}
@@ -71,7 +78,11 @@ public class NurseController extends BaseController {
 	 */
 	@ResponseBody
 	@RequestMapping("update")
-	public String update(Nurse nurse) {
+	public String update(Nurse nurse, Map<String, Object> map) {
+		List<User> list = userService.getById(nurse.getUserId(), map);
+		if(list == null || list.size() == 0){
+			return "false";
+		}
 		nurseService.update(nurse);
 		return "true";
 	}
