@@ -30,6 +30,8 @@ public class OutController extends BaseController {
 
 	@Autowired
 	OutService outService;
+	@Autowired
+	UserService userService;
 
 	/**
 	 * 查询
@@ -60,7 +62,11 @@ public class OutController extends BaseController {
 	 */
 	@ResponseBody
 	@RequestMapping("add")
-	public String add(Out out) {
+	public String add(Out out, Map<String, Object> map) {
+		List<User> list = userService.getById(out.getUserId(), map);
+		if(list == null || list.size() == 0){
+			return "false";
+		}
 		outService.add(out);
 		return "true";
 	}

@@ -24,20 +24,16 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
  					  <div style="padding: 20px">
  						  <form>
 							   <div class="form-group">
-							    <label for="exampleInputEmail1">姓名</label>
-							    <input type="text" class="form-control" id="name" placeholder="姓名">
+							    <label for="exampleInputEmail1">老人id</label>
+							    <input type="text" class="form-control" id="userId" placeholder="老人id">
 							  </div>
 							   <div class="form-group">
-							    <label for="exampleInputEmail1">手机号</label>
-							    <input type="text" class="form-control" id="phone" placeholder="手机号">
+							    <label for="exampleInputEmail1">陪同人姓名</label>
+							    <input type="text" class="form-control" id="withName" placeholder="陪同人姓名">
 							  </div>
 							  <div class="form-group">
-							    <label for="exampleInputEmail1">预约时间</label>
+							    <label for="exampleInputEmail1">外出时间</label>
 							    <input type="text" class="form-control" id="datetimepicker">
-							  </div>
-							  <div class="form-group">
-							    <label for="exampleInputEmail1">备注</label>
-							    <textarea id="content" class="form-control"></textarea>
 							  </div>
 							  <div align="center"><button type="button" class="btn btn-primary" onclick="sub()">提交</button></div>
 						</form>
@@ -49,17 +45,19 @@ $('#datetimepicker').datetimepicker({
 });
 
 function sub(){
-var name=$("#name").val();
-var phone=$("#phone").val();
-var content=$("#content").val();
+var userId=$("#userId").val();
+var withName=$("#withName").val();
 var datetimepicker=$("#datetimepicker").val();
-	$.post("${domain}/appointment/add.action", {
-		name : name,
-		phone : phone,
-		'content' : content,
+	$.post("${domain}/out/add.action", {
+		userId : userId,
+		'withName' : withName,
 		'create_time' : datetimepicker,
 		},  function(result) {
-		layer.msg('添加成功!',{icon:1,time:2000});
+		if(result == 'false'){
+			layer.msg('老人编号输入有误，请重新输入!',{icon:2,time:2000});
+			return;
+		}else
+			layer.msg('添加成功!',{icon:1,time:2000});
 	});
 }
 </script>

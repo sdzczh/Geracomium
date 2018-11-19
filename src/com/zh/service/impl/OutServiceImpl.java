@@ -23,9 +23,9 @@ public class OutServiceImpl implements OutService{
 	private BaseDaoI dao;
 
 	@Override
-	public List<Out> get(Map<String, Object> map) {
-		String sql="from Out";
-		List<Out> list = dao.find(sql);
+	public List<Map<String, Object>> get(Map<String, Object> map) {
+		String sql="SELECT i.*,u.name FROM geracomiumdb.outLog i LEFT JOIN geracomiumdb.user u ON i.userId=u.id";
+		List<Map<String, Object>> list = (List<Map<String, Object>>) dao.findBySql(sql);
 		map.put("data", list);
 		return list;
 	}
@@ -38,8 +38,10 @@ public class OutServiceImpl implements OutService{
 
 	@Override
 	public Integer add(Out out) {
-		out.setCreate_time(DateUtils.getCurrentTimeStr());
-		return (Integer) dao.save(out);
+		/*String hql = "INSERT INTO geracomiumdb.out (create_time, userId, withName) VALUES ("+out.getCreate_time()+","+out.getUserId()+","+out.getWithName()+")";
+		dao.executeSql(hql);*/
+		dao.save(out);
+		return 0;
 	}
 
 	@Override
@@ -52,7 +54,14 @@ public class OutServiceImpl implements OutService{
 	public List<Out> getById(Integer id, Map<String, Object> map) {
 		String hql = "from Out where id="+id;
 		List<Out> list = dao.find(hql);
-		map.put("data", list.get(0));
+		Out out = list.get(0);
+		map.put("data", out);
+		hql = "from User where id="+out.getUserId();
+		List<User> userList = dao.find(hql);
+		map.put("data", out);
+		if(userList != null && userList.size() > 0){
+			map.put("name", userList.get(0).getName());
+		}
 		return list;
 	}
 	
