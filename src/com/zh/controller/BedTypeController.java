@@ -40,7 +40,7 @@ public class BedTypeController extends BaseController {
 	@RequestMapping("get")
 	public String get(Map<String, Object> map) {
 		bedTypeService.get(map);
-		return "true";
+		return "bedType/list";
 	}
 	/**
 	 * 删除

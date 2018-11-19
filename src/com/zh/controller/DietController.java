@@ -40,7 +40,7 @@ public class DietController extends BaseController {
 	@RequestMapping("get")
 	public String get(Map<String, Object> map) {
 		dietService.get(map);
-		return "true";
+		return "diet/list";
 	}
 	/**
 	 * 删除

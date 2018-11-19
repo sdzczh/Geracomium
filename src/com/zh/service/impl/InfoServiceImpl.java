@@ -1,5 +1,6 @@
 package com.zh.service.impl;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -23,9 +24,9 @@ public class InfoServiceImpl implements InfoService{
 	private BaseDaoI dao;
 
 	@Override
-	public List<Info> get(Map<String, Object> map) {
-		String sql="from Info";
-		List<Info> list = dao.find(sql);
+	public List<Map<String, Object>> get(Map<String, Object> map) {
+		String sql="SELECT i.*,u.name FROM info i LEFT JOIN geracomiumdb.user u ON i.userId=u.id";
+		List<Map<String, Object>> list = (List<Map<String, Object>>) dao.findBySql(sql);
 		map.put("data", list);
 		return list;
 	}
@@ -52,7 +53,13 @@ public class InfoServiceImpl implements InfoService{
 	public List<Info> getById(Integer id, Map<String, Object> map) {
 		String hql = "from Info where id="+id;
 		List<Info> list = dao.find(hql);
-		map.put("data", list.get(0));
+		Info info = list.get(0);
+		hql = "from User where id="+info.getUserId();
+		List<User> userList = dao.find(hql);
+		map.put("data", info);
+		if(userList != null && userList.size() > 0){
+			map.put("name", userList.get(0).getName());
+		}
 		return list;
 	}
 	

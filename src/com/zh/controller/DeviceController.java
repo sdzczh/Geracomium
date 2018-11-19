@@ -40,7 +40,7 @@ public class DeviceController extends BaseController {
 	@RequestMapping("get")
 	public String get(Map<String, Object> map) {
 		deviceService.get(map);
-		return "true";
+		return "device/list";
 	}
 	/**
 	 * 删除

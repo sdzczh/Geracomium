@@ -40,7 +40,7 @@ public class VisitController extends BaseController {
 	@RequestMapping("get")
 	public String get(Map<String, Object> map) {
 		visitService.get(map);
-		return "true";
+		return "visit/list";
 	}
 	/**
 	 * 删除

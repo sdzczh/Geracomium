@@ -40,7 +40,7 @@ public class NurseController extends BaseController {
 	@RequestMapping("get")
 	public String get(Map<String, Object> map) {
 		nurseService.get(map);
-		return "true";
+		return "nurse/list";
 	}
 	/**
 	 * 删除

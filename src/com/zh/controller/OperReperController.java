@@ -40,7 +40,7 @@ public class OperReperController extends BaseController {
 	@RequestMapping("get")
 	public String get(Map<String, Object> map) {
 		operReperService.get(map);
-		return "true";
+		return "operReper/list";
 	}
 	/**
 	 * 删除

@@ -38,13 +38,12 @@ public class AppointmentServiceImpl implements AppointmentService{
 
 	@Override
 	public Integer add(Appointment appointment) {
-		appointment.setCreate_time(DateUtils.getCurrentTimeStr());
 		return (Integer) dao.save(appointment);
 	}
 
 	@Override
 	public Integer update(Appointment appointment) {
-		dao.update(appointment);
+		dao.saveOrUpdate(appointment);
 		return 0;
 	}
 

@@ -40,7 +40,7 @@ public class RepertoryController extends BaseController {
 	@RequestMapping("get")
 	public String get(Map<String, Object> map) {
 		repertoryService.get(map);
-		return "true";
+		return "repertory/list";
 	}
 	/**
 	 * 删除

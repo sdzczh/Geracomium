@@ -40,7 +40,7 @@ public class StaffController extends BaseController {
 	@RequestMapping("get")
 	public String get(Map<String, Object> map) {
 		staffService.get(map);
-		return "true";
+		return "staff/list";
 	}
 	/**
 	 * 删除

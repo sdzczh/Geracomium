@@ -30,6 +30,8 @@ public class InfoController extends BaseController {
 
 	@Autowired
 	InfoService infoService;
+	@Autowired
+	UserService userService;
 
 	/**
 	 * 查询
@@ -40,7 +42,7 @@ public class InfoController extends BaseController {
 	@RequestMapping("get")
 	public String get(Map<String, Object> map) {
 		infoService.get(map);
-		return "true";
+		return "info/list";
 	}
 	/**
 	 * 删除
@@ -60,7 +62,11 @@ public class InfoController extends BaseController {
 	 */
 	@ResponseBody
 	@RequestMapping("add")
-	public String add(Info info) {
+	public String add(Info info, Map<String, Object> map) {
+		List<User> list = userService.getById(info.getUserId(), map);
+		if(list == null || list.size() == 0){
+			return "false";
+		}
 		infoService.add(info);
 		return "true";
 	}

@@ -40,7 +40,7 @@ public class OutController extends BaseController {
 	@RequestMapping("get")
 	public String get(Map<String, Object> map) {
 		outService.get(map);
-		return "true";
+		return "out/list";
 	}
 	/**
 	 * 删除

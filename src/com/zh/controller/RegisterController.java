@@ -40,7 +40,7 @@ public class RegisterController extends BaseController {
 	@RequestMapping("get")
 	public String get(Map<String, Object> map) {
 		registerService.get(map);
-		return "true";
+		return "register/list";
 	}
 	/**
 	 * 删除

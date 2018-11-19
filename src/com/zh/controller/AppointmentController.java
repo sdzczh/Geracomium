@@ -40,7 +40,7 @@ public class AppointmentController extends BaseController {
 	@RequestMapping("get")
 	public String get(Map<String, Object> map) {
 		appointmentService.get(map);
-		return "true";
+		return "appointment/list";
 	}
 	/**
 	 * 删除
