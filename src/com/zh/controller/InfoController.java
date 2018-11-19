@@ -13,33 +13,33 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.alibaba.fastjson.JSON;
 import com.zh.base.BaseController;
 import com.zh.pojo.Admin;
-import com.zh.pojo.Appointment;
+import com.zh.pojo.Info;
 import com.zh.pojo.User;
 import com.zh.service.AdminService;
-import com.zh.service.AppointmentService;
+import com.zh.service.InfoService;
 import com.zh.service.UserManageService;
 
 /**
- * 预约
+ * 住院信息
  * @author 赵赫
  *
  */
 @Controller
-@RequestMapping("/appointment")
-public class AppointmentController extends BaseController {
+@RequestMapping("/info")
+public class InfoController extends BaseController {
 
 	@Autowired
-	AppointmentService appointmentService;
+	InfoService infoService;
 
 	/**
 	 * 查询
 	 * @param map
-	 * @param Appointment
+	 * @param info
 	 * @return
 	 */
-	@RequestMapping("get")
+	@RequestMapping("getInfo")
 	public String get(Map<String, Object> map) {
-		appointmentService.get(map);
+		infoService.get(map);
 		return "true";
 	}
 	/**
@@ -50,48 +50,48 @@ public class AppointmentController extends BaseController {
 	@ResponseBody
 	@RequestMapping("del")
 	public String del(Integer id) {
-		appointmentService.del(id);
+		infoService.del(id);
 		return "true";
 	}
 	/**
 	 * 增加
-	 * @param appointment
+	 * @param info
 	 * @return
 	 */
 	@ResponseBody
 	@RequestMapping("add")
-	public String add(Appointment appointment) {
-		appointmentService.add(appointment);
+	public String add(Info info) {
+		infoService.add(info);
 		return "true";
 	}
 	/**
 	 * 修改
-	 * @param appointment
+	 * @param info
 	 * @return
 	 */
 	@ResponseBody
 	@RequestMapping("update")
-	public String update(Appointment appointment) {
-		appointmentService.update(appointment);
+	public String update(Info info) {
+		infoService.update(info);
 		return "true";
 	}
 	/**
 	 * 跳转到更新页面
-	 * @param appointment
+	 * @param info
 	 * @return
 	 */
 	@RequestMapping("toUpdate")
 	public String toUpdate(Map<String, Object> map, Integer id) {
-		appointmentService.getById(id, map);
-		return "appointment/update";
+		infoService.getById(id, map);
+		return "info/update";
 	}
 	/**
 	 * 跳转到添加页面
-	 * @param appointment
+	 * @param info
 	 * @return
 	 */
 	@RequestMapping("toAdd")
 	public String toAdd() {
-		return "appointment/add";
+		return "info/add";
 	}
 }

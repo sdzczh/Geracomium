@@ -13,33 +13,33 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.alibaba.fastjson.JSON;
 import com.zh.base.BaseController;
 import com.zh.pojo.Admin;
-import com.zh.pojo.Appointment;
+import com.zh.pojo.Register;
 import com.zh.pojo.User;
 import com.zh.service.AdminService;
-import com.zh.service.AppointmentService;
+import com.zh.service.RegisterService;
 import com.zh.service.UserManageService;
 
 /**
- * 预约
+ * 入住
  * @author 赵赫
  *
  */
 @Controller
-@RequestMapping("/appointment")
-public class AppointmentController extends BaseController {
+@RequestMapping("/register")
+public class RegisterController extends BaseController {
 
 	@Autowired
-	AppointmentService appointmentService;
+	RegisterService registerService;
 
 	/**
 	 * 查询
 	 * @param map
-	 * @param Appointment
+	 * @param register
 	 * @return
 	 */
-	@RequestMapping("get")
+	@RequestMapping("getRegister")
 	public String get(Map<String, Object> map) {
-		appointmentService.get(map);
+		registerService.get(map);
 		return "true";
 	}
 	/**
@@ -50,48 +50,48 @@ public class AppointmentController extends BaseController {
 	@ResponseBody
 	@RequestMapping("del")
 	public String del(Integer id) {
-		appointmentService.del(id);
+		registerService.del(id);
 		return "true";
 	}
 	/**
 	 * 增加
-	 * @param appointment
+	 * @param register
 	 * @return
 	 */
 	@ResponseBody
 	@RequestMapping("add")
-	public String add(Appointment appointment) {
-		appointmentService.add(appointment);
+	public String add(Register register) {
+		registerService.add(register);
 		return "true";
 	}
 	/**
 	 * 修改
-	 * @param appointment
+	 * @param register
 	 * @return
 	 */
 	@ResponseBody
 	@RequestMapping("update")
-	public String update(Appointment appointment) {
-		appointmentService.update(appointment);
+	public String update(Register register) {
+		registerService.update(register);
 		return "true";
 	}
 	/**
 	 * 跳转到更新页面
-	 * @param appointment
+	 * @param register
 	 * @return
 	 */
 	@RequestMapping("toUpdate")
 	public String toUpdate(Map<String, Object> map, Integer id) {
-		appointmentService.getById(id, map);
-		return "appointment/update";
+		registerService.getById(id, map);
+		return "register/update";
 	}
 	/**
 	 * 跳转到添加页面
-	 * @param appointment
+	 * @param register
 	 * @return
 	 */
 	@RequestMapping("toAdd")
 	public String toAdd() {
-		return "appointment/add";
+		return "register/add";
 	}
 }
