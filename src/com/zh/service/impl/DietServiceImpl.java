@@ -38,7 +38,6 @@ public class DietServiceImpl implements DietService{
 
 	@Override
 	public Integer add(Diet diet) {
-		diet.setCreate_time(DateUtils.getCurrentTimeStr());
 		return (Integer) dao.save(diet);
 	}
 

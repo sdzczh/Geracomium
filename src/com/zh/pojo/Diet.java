@@ -1,6 +1,7 @@
 package com.zh.pojo;
 
 import java.io.Serializable;
+import java.math.BigDecimal;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -17,6 +18,7 @@ public class Diet implements Serializable{
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Integer id;
 	private String name;
+	private BigDecimal price;
 	private String create_time;
 	public Integer getId() {
 		return id;
@@ -32,6 +34,13 @@ public class Diet implements Serializable{
 	}
 	public String getCreate_time() {
 		return create_time;
+	}
+	
+	public BigDecimal getPrice() {
+		return price;
+	}
+	public void setPrice(BigDecimal price) {
+		this.price = price;
 	}
 	public void setCreate_time(String create_time) {
 		this.create_time = create_time;
