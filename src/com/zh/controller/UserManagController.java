@@ -29,10 +29,10 @@ public class UserManagController extends BaseController {
 	 * @param user
 	 * @return
 	 */
-	@RequestMapping("getUser")
+	@RequestMapping("get")
 	public String get(Map<String, Object> map) {
 		userService.get(map);
-		return "true";
+		return "user/list";
 	}
 	/**
 	 * 删除

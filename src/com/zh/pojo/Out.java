@@ -1,7 +1,6 @@
 package com.zh.pojo;
 
 import java.io.Serializable;
-import java.util.Date;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -19,7 +18,7 @@ public class Out implements Serializable{
 	private Integer id;
 	private Integer userId;
 	private String withName;
-	private Date create_time;
+	private String create_time;
 	public Integer getId() {
 		return id;
 	}
@@ -39,10 +38,10 @@ public class Out implements Serializable{
 	public void setWithName(String withName) {
 		this.withName = withName;
 	}
-	public Date getCreate_time() {
+	public String getCreate_time() {
 		return create_time;
 	}
-	public void setCreate_time(Date create_time) {
+	public void setCreate_time(String create_time) {
 		this.create_time = create_time;
 	}
 	public static long getSerialversionuid() {

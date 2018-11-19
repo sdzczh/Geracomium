@@ -1,7 +1,6 @@
 package com.zh.pojo;
 
 import java.io.Serializable;
-import java.util.Date;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -20,8 +19,8 @@ public class Visit implements Serializable{
 	private String name;
 	private Integer userId;
 	private String relation;
-	private Date create_time;
-	private Date exit_time;
+	private String create_time;
+	private String exit_time;
 	public Integer getId() {
 		return id;
 	}
@@ -47,16 +46,16 @@ public class Visit implements Serializable{
 	public void setRelation(String relation) {
 		this.relation = relation;
 	}
-	public Date getExit_time() {
+	public String getExit_time() {
 		return exit_time;
 	}
-	public void setExit_time(Date exit_time) {
+	public void setExit_time(String exit_time) {
 		this.exit_time = exit_time;
 	}
-	public Date getCreate_time() {
+	public String getCreate_time() {
 		return create_time;
 	}
-	public void setCreate_time(Date create_time) {
+	public void setCreate_time(String create_time) {
 		this.create_time = create_time;
 	}
 	public static long getSerialversionuid() {

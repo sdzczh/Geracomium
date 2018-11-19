@@ -1,7 +1,6 @@
 package com.zh.pojo;
 
 import java.io.Serializable;
-import java.util.Date;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -20,7 +19,7 @@ public class Device implements Serializable{
 	private Integer userId;
 	private Integer state;
 	private String name;
-	private Date create_time;
+	private String create_time;
 	public Integer getId() {
 		return id;
 	}
@@ -46,10 +45,10 @@ public class Device implements Serializable{
 	public void setState(Integer state) {
 		this.state = state;
 	}
-	public Date getCreate_time() {
+	public String getCreate_time() {
 		return create_time;
 	}
-	public void setCreate_time(Date create_time) {
+	public void setCreate_time(String create_time) {
 		this.create_time = create_time;
 	}
 	public static long getSerialversionuid() {

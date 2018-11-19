@@ -22,9 +22,9 @@ public class AdminServiceImpl implements AdminService{
 	private BaseDaoI dao;
 
 	@Override
-	public List<Map<String, Object>> login(Admin admin) {
-		String sql="select * from admin where account='"+admin.getAccount()+"' and password='"+admin.getPassword()+"'";
-		List<Map<String, Object>> list=(List<Map<String, Object>>) dao.findBySql(sql);
+	public List<Admin> login(Admin admin) {
+		String sql="from Admin where account='"+admin.getAccount()+"' and password='"+admin.getPassword()+"'";
+		List<Admin> list=dao.find(sql);
 		return list;
 	}
 	

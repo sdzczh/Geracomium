@@ -1,7 +1,6 @@
 package com.zh.pojo;
 
 import java.io.Serializable;
-import java.util.Date;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -21,7 +20,7 @@ public class Register implements Serializable{
 	private Integer sex;
 	private String name;
 	private String remark;
-	private Date create_time;
+	private String create_time;
 	public Integer getId() {
 		return id;
 	}
@@ -54,10 +53,10 @@ public class Register implements Serializable{
 	public void setRemark(String remark) {
 		this.remark = remark;
 	}
-	public Date getCreate_time() {
+	public String getCreate_time() {
 		return create_time;
 	}
-	public void setCreate_time(Date create_time) {
+	public void setCreate_time(String create_time) {
 		this.create_time = create_time;
 	}
 	public static long getSerialversionuid() {

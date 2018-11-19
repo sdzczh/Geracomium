@@ -1,7 +1,6 @@
 package com.zh.pojo;
 
 import java.io.Serializable;
-import java.util.Date;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -21,7 +20,7 @@ public class Staff implements Serializable{
 	private Integer age;
 	private String phone;
 	private String position;
-	private Date create_time;
+	private String create_time;
 	public Integer getId() {
 		return id;
 	}
@@ -53,10 +52,10 @@ public class Staff implements Serializable{
 	public void setPosition(String position) {
 		this.position = position;
 	}
-	public Date getCreate_time() {
+	public String getCreate_time() {
 		return create_time;
 	}
-	public void setCreate_time(Date create_time) {
+	public void setCreate_time(String create_time) {
 		this.create_time = create_time;
 	}
 	public static long getSerialversionuid() {

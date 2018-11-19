@@ -11,7 +11,7 @@ import com.zh.pojo.User;
 
 public interface AdminService {
 
-	List<Map<String, Object>> login(Admin admin);
+	List<Admin> login(Admin admin);
 	
 	
 }
