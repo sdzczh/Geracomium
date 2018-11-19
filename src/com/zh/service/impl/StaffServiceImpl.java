@@ -52,6 +52,9 @@ public class StaffServiceImpl implements StaffService{
 	public List<Staff> getById(Integer id, Map<String, Object> map) {
 		String hql = "from Staff where id="+id;
 		List<Staff> list = dao.find(hql);
+		if(list == null || list.size() == 0){
+			return null;
+		}
 		map.put("data", list.get(0));
 		return list;
 	}

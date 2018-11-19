@@ -14,9 +14,11 @@ import com.alibaba.fastjson.JSON;
 import com.zh.base.BaseController;
 import com.zh.pojo.Admin;
 import com.zh.pojo.Repertory;
+import com.zh.pojo.Staff;
 import com.zh.pojo.User;
 import com.zh.service.AdminService;
 import com.zh.service.RepertoryService;
+import com.zh.service.StaffService;
 import com.zh.service.UserService;
 
 /**
@@ -30,6 +32,8 @@ public class RepertoryController extends BaseController {
 
 	@Autowired
 	RepertoryService repertoryService;
+	@Autowired
+	StaffService staffService;
 
 	/**
 	 * 查询
@@ -60,7 +64,11 @@ public class RepertoryController extends BaseController {
 	 */
 	@ResponseBody
 	@RequestMapping("add")
-	public String add(Repertory repertory) {
+	public String add(Repertory repertory, Map<String, Object> map) {
+		List<Staff> list = staffService.getById(repertory.getSid(), map);
+		if(list == null || list.size() == 0){
+			return "false";
+		}
 		repertoryService.add(repertory);
 		return "true";
 	}
@@ -71,7 +79,11 @@ public class RepertoryController extends BaseController {
 	 */
 	@ResponseBody
 	@RequestMapping("update")
-	public String update(Repertory repertory) {
+	public String update(Repertory repertory, Map<String, Object> map) {
+		List<Staff> list = staffService.getById(repertory.getSid(), map);
+		if(list == null || list.size() == 0){
+			return "false";
+		}
 		repertoryService.update(repertory);
 		return "true";
 	}
