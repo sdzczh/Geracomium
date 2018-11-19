@@ -16,7 +16,7 @@ import com.zh.service.UserService;
 @SuppressWarnings("unchecked")
 @Service
 @Transactional
-public class BedTypeServiceImpl2 implements BedTypeService{
+public class BedTypeServiceImpl implements BedTypeService{
 
 	@Autowired
 	private BaseDaoI dao;
@@ -50,6 +50,9 @@ public class BedTypeServiceImpl2 implements BedTypeService{
 	public List<BedType> getById(Integer id, Map<String, Object> map) {
 		String hql = "from BedType where id="+id;
 		List<BedType> list = dao.find(hql);
+		if(list == null || list.size() == 0){
+			return null;
+		}
 		map.put("data", list.get(0));
 		return list;
 	}

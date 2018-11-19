@@ -55,7 +55,7 @@ var age=$("#age").val();
 var position=$("#position").val();
 	$.post("${domain}/staff/update.action", {
 		id : id,
-		name : name,
+		'name' : name,
 		'phone' : phone,
 		age : age,
 		'position' : position,

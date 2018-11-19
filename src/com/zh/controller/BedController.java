@@ -14,9 +14,11 @@ import com.alibaba.fastjson.JSON;
 import com.zh.base.BaseController;
 import com.zh.pojo.Admin;
 import com.zh.pojo.Bed;
+import com.zh.pojo.BedType;
 import com.zh.pojo.User;
 import com.zh.service.AdminService;
 import com.zh.service.BedService;
+import com.zh.service.BedTypeService;
 import com.zh.service.UserService;
 
 /**
@@ -30,6 +32,10 @@ public class BedController extends BaseController {
 
 	@Autowired
 	BedService bedService;
+	@Autowired
+	UserService userService;
+	@Autowired
+	BedTypeService bedTypeService;
 
 	/**
 	 * 查询
@@ -60,7 +66,15 @@ public class BedController extends BaseController {
 	 */
 	@ResponseBody
 	@RequestMapping("add")
-	public String add(Bed bed) {
+	public String add(Bed bed, Map<String, Object> map) {
+		List<User> list = userService.getById(bed.getUserId(), map);
+		if(list == null || list.size() == 0){
+			return "false";
+		}
+		List<BedType> list2 = bedTypeService.getById(bed.getType(), map);
+		if(list2 == null || list2.size() == 0){
+			return "error";
+		}
 		bedService.add(bed);
 		return "true";
 	}
@@ -71,7 +85,15 @@ public class BedController extends BaseController {
 	 */
 	@ResponseBody
 	@RequestMapping("update")
-	public String update(Bed bed) {
+	public String update(Bed bed, Map<String, Object> map) {
+		List<User> list = userService.getById(bed.getUserId(), map);
+		if(list == null || list.size() == 0){
+			return "false";
+		}
+		List<BedType> list2 = bedTypeService.getById(bed.getType(), map);
+		if(list2 == null || list2.size() == 0){
+			return "error";
+		}
 		bedService.update(bed);
 		return "true";
 	}

@@ -20,6 +20,5 @@ public interface BedTypeService {
 	Integer update(BedType bedType);
 
 	List<BedType> getById(Integer id, Map<String, Object> map);
-	
-	
+
 }

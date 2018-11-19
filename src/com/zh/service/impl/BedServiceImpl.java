@@ -23,9 +23,9 @@ public class BedServiceImpl implements BedService{
 	private BaseDaoI dao;
 
 	@Override
-	public List<Bed> get(Map<String, Object> map) {
-		String sql="from Bed";
-		List<Bed> list = dao.find(sql);
+	public List<Map<String, Object>> get(Map<String, Object> map) {
+		String sql="SELECT i.*,u.name,b.name bname FROM geracomiumdb.bed i LEFT JOIN geracomiumdb.user u ON i.userId=u.id left join bed_type b on i.type=b.id";
+		List<Map<String, Object>> list = (List<Map<String, Object>>) dao.findBySql(sql);
 		map.put("data", list);
 		return list;
 	}
