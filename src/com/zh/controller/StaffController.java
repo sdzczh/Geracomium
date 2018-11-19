@@ -13,33 +13,33 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.alibaba.fastjson.JSON;
 import com.zh.base.BaseController;
 import com.zh.pojo.Admin;
-import com.zh.pojo.Info;
+import com.zh.pojo.Staff;
 import com.zh.pojo.User;
 import com.zh.service.AdminService;
-import com.zh.service.InfoService;
+import com.zh.service.StaffService;
 import com.zh.service.UserService;
 
 /**
- * 住院信息
+ * 员工
  * @author 赵赫
  *
  */
 @Controller
-@RequestMapping("/info")
-public class InfoController extends BaseController {
+@RequestMapping("/staff")
+public class StaffController extends BaseController {
 
 	@Autowired
-	InfoService infoService;
+	StaffService staffService;
 
 	/**
 	 * 查询
 	 * @param map
-	 * @param info
+	 * @param staff
 	 * @return
 	 */
-	@RequestMapping("getInfo")
+	@RequestMapping("getStaff")
 	public String get(Map<String, Object> map) {
-		infoService.get(map);
+		staffService.get(map);
 		return "true";
 	}
 	/**
@@ -50,48 +50,48 @@ public class InfoController extends BaseController {
 	@ResponseBody
 	@RequestMapping("del")
 	public String del(Integer id) {
-		infoService.del(id);
+		staffService.del(id);
 		return "true";
 	}
 	/**
 	 * 增加
-	 * @param info
+	 * @param staff
 	 * @return
 	 */
 	@ResponseBody
 	@RequestMapping("add")
-	public String add(Info info) {
-		infoService.add(info);
+	public String add(Staff staff) {
+		staffService.add(staff);
 		return "true";
 	}
 	/**
 	 * 修改
-	 * @param info
+	 * @param staff
 	 * @return
 	 */
 	@ResponseBody
 	@RequestMapping("update")
-	public String update(Info info) {
-		infoService.update(info);
+	public String update(Staff staff) {
+		staffService.update(staff);
 		return "true";
 	}
 	/**
 	 * 跳转到更新页面
-	 * @param info
+	 * @param staff
 	 * @return
 	 */
 	@RequestMapping("toUpdate")
 	public String toUpdate(Map<String, Object> map, Integer id) {
-		infoService.getById(id, map);
-		return "info/update";
+		staffService.getById(id, map);
+		return "staff/update";
 	}
 	/**
 	 * 跳转到添加页面
-	 * @param info
+	 * @param staff
 	 * @return
 	 */
 	@RequestMapping("toAdd")
 	public String toAdd() {
-		return "info/add";
+		return "staff/add";
 	}
 }

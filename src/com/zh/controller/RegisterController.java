@@ -17,7 +17,7 @@ import com.zh.pojo.Register;
 import com.zh.pojo.User;
 import com.zh.service.AdminService;
 import com.zh.service.RegisterService;
-import com.zh.service.UserManageService;
+import com.zh.service.UserService;
 
 /**
  * 入住

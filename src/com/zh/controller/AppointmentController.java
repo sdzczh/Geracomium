@@ -17,7 +17,7 @@ import com.zh.pojo.Appointment;
 import com.zh.pojo.User;
 import com.zh.service.AdminService;
 import com.zh.service.AppointmentService;
-import com.zh.service.UserManageService;
+import com.zh.service.UserService;
 
 /**
  * 预约

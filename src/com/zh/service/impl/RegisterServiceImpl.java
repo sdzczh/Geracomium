@@ -12,7 +12,7 @@ import com.zh.dao.inte.BaseDaoI;
 import com.zh.pojo.Register;
 import com.zh.pojo.User;
 import com.zh.service.RegisterService;
-import com.zh.service.UserManageService;
+import com.zh.service.UserService;
 @SuppressWarnings("unchecked")
 @Service
 @Transactional

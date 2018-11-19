@@ -13,33 +13,33 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.alibaba.fastjson.JSON;
 import com.zh.base.BaseController;
 import com.zh.pojo.Admin;
-import com.zh.pojo.Info;
+import com.zh.pojo.Out;
 import com.zh.pojo.User;
 import com.zh.service.AdminService;
-import com.zh.service.InfoService;
+import com.zh.service.OutService;
 import com.zh.service.UserService;
 
 /**
- * 住院信息
+ * 外出登记
  * @author 赵赫
  *
  */
 @Controller
-@RequestMapping("/info")
-public class InfoController extends BaseController {
+@RequestMapping("/out")
+public class OutController extends BaseController {
 
 	@Autowired
-	InfoService infoService;
+	OutService outService;
 
 	/**
 	 * 查询
 	 * @param map
-	 * @param info
+	 * @param out
 	 * @return
 	 */
-	@RequestMapping("getInfo")
+	@RequestMapping("getOut")
 	public String get(Map<String, Object> map) {
-		infoService.get(map);
+		outService.get(map);
 		return "true";
 	}
 	/**
@@ -50,48 +50,48 @@ public class InfoController extends BaseController {
 	@ResponseBody
 	@RequestMapping("del")
 	public String del(Integer id) {
-		infoService.del(id);
+		outService.del(id);
 		return "true";
 	}
 	/**
 	 * 增加
-	 * @param info
+	 * @param out
 	 * @return
 	 */
 	@ResponseBody
 	@RequestMapping("add")
-	public String add(Info info) {
-		infoService.add(info);
+	public String add(Out out) {
+		outService.add(out);
 		return "true";
 	}
 	/**
 	 * 修改
-	 * @param info
+	 * @param out
 	 * @return
 	 */
 	@ResponseBody
 	@RequestMapping("update")
-	public String update(Info info) {
-		infoService.update(info);
+	public String update(Out out) {
+		outService.update(out);
 		return "true";
 	}
 	/**
 	 * 跳转到更新页面
-	 * @param info
+	 * @param out
 	 * @return
 	 */
 	@RequestMapping("toUpdate")
 	public String toUpdate(Map<String, Object> map, Integer id) {
-		infoService.getById(id, map);
-		return "info/update";
+		outService.getById(id, map);
+		return "out/update";
 	}
 	/**
 	 * 跳转到添加页面
-	 * @param info
+	 * @param out
 	 * @return
 	 */
 	@RequestMapping("toAdd")
 	public String toAdd() {
-		return "info/add";
+		return "out/add";
 	}
 }

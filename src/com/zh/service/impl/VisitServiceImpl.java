@@ -9,47 +9,47 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.zh.dao.inte.BaseDaoI;
-import com.zh.pojo.Info;
+import com.zh.pojo.Visit;
 import com.zh.pojo.User;
-import com.zh.service.InfoService;
+import com.zh.service.VisitService;
 import com.zh.service.UserService;
 @SuppressWarnings("unchecked")
 @Service
 @Transactional
-public class InfoServiceImpl implements InfoService{
+public class VisitServiceImpl implements VisitService{
 
 	@Autowired
 	private BaseDaoI dao;
 
 	@Override
-	public List<Info> get(Map<String, Object> map) {
-		String sql="from Info";
-		List<Info> list = dao.find(sql);
+	public List<Visit> get(Map<String, Object> map) {
+		String sql="from Visit";
+		List<Visit> list = dao.find(sql);
 		map.put("data", list);
 		return list;
 	}
 
 	@Override
 	public Integer del(Integer id) {
-		String hql = "delete from Info where id="+id;
+		String hql = "delete from Visit where id="+id;
 		return dao.executeHql(hql);
 	}
 
 	@Override
-	public Integer add(Info info) {
-		return (Integer) dao.save(info);
+	public Integer add(Visit visit) {
+		return (Integer) dao.save(visit);
 	}
 
 	@Override
-	public Integer update(Info info) {
-		dao.update(info);
+	public Integer update(Visit visit) {
+		dao.update(visit);
 		return 0;
 	}
 
 	@Override
-	public List<Info> getById(Integer id, Map<String, Object> map) {
-		String hql = "from Info where id="+id;
-		List<Info> list = dao.find(hql);
+	public List<Visit> getById(Integer id, Map<String, Object> map) {
+		String hql = "from Visit where id="+id;
+		List<Visit> list = dao.find(hql);
 		map.put("data", list);
 		return list;
 	}
