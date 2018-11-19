@@ -13,10 +13,10 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.alibaba.fastjson.JSON;
 import com.zh.base.BaseController;
 import com.zh.pojo.Admin;
-import com.zh.pojo.Consult;
+import com.zh.pojo.Appointment;
 import com.zh.pojo.User;
 import com.zh.service.AdminService;
-import com.zh.service.ConsultService;
+import com.zh.service.AppointmentService;
 import com.zh.service.UserManageService;
 
 /**
@@ -25,21 +25,21 @@ import com.zh.service.UserManageService;
  *
  */
 @Controller
-@RequestMapping("/consult")
-public class ConsultController extends BaseController {
+@RequestMapping("/appointment")
+public class AppointmentController extends BaseController {
 
 	@Autowired
-	ConsultService consultService;
+	AppointmentService appointmentService;
 
 	/**
 	 * 查询
 	 * @param map
-	 * @param consult
+	 * @param Appointment
 	 * @return
 	 */
-	@RequestMapping("getConsult")
+	@RequestMapping("get")
 	public String get(Map<String, Object> map) {
-		consultService.get(map);
+		appointmentService.get(map);
 		return "true";
 	}
 	/**
@@ -50,48 +50,48 @@ public class ConsultController extends BaseController {
 	@ResponseBody
 	@RequestMapping("del")
 	public String del(Integer id) {
-		consultService.del(id);
+		appointmentService.del(id);
 		return "true";
 	}
 	/**
 	 * 增加
-	 * @param consult
+	 * @param appointment
 	 * @return
 	 */
 	@ResponseBody
 	@RequestMapping("add")
-	public String add(Consult consult) {
-		consultService.add(consult);
+	public String add(Appointment appointment) {
+		appointmentService.add(appointment);
 		return "true";
 	}
 	/**
 	 * 修改
-	 * @param consult
+	 * @param appointment
 	 * @return
 	 */
 	@ResponseBody
 	@RequestMapping("update")
-	public String update(Consult consult) {
-		consultService.update(consult);
+	public String update(Appointment appointment) {
+		appointmentService.update(appointment);
 		return "true";
 	}
 	/**
 	 * 跳转到更新页面
-	 * @param consult
+	 * @param appointment
 	 * @return
 	 */
 	@RequestMapping("toUpdate")
 	public String toUpdate(Map<String, Object> map, Integer id) {
-		consultService.getById(id, map);
-		return "consult/update";
+		appointmentService.getById(id, map);
+		return "appointment/update";
 	}
 	/**
 	 * 跳转到添加页面
-	 * @param consult
+	 * @param appointment
 	 * @return
 	 */
 	@RequestMapping("toAdd")
 	public String toAdd() {
-		return "consult/add";
+		return "appointment/add";
 	}
 }

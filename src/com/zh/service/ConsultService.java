@@ -11,7 +11,7 @@ import com.zh.pojo.User;
 
 public interface ConsultService {
 
-	List<Consult> get(Map<String, Object> map, Consult consult);
+	List<Consult> get(Map<String, Object> map);
 
 	Integer del(Integer id);
 

@@ -9,47 +9,47 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.zh.dao.inte.BaseDaoI;
-import com.zh.pojo.Consult;
+import com.zh.pojo.Appointment;
 import com.zh.pojo.User;
-import com.zh.service.ConsultService;
+import com.zh.service.AppointmentService;
 import com.zh.service.UserManageService;
 @SuppressWarnings("unchecked")
 @Service
 @Transactional
-public class ConsultServiceImpl implements ConsultService{
+public class AppointmentServiceImpl implements AppointmentService{
 
 	@Autowired
 	private BaseDaoI dao;
 
 	@Override
-	public List<Consult> get(Map<String, Object> map) {
-		String sql="from Consult";
-		List<Consult> list = dao.find(sql);
+	public List<Appointment> get(Map<String, Object> map) {
+		String sql="from Appointment";
+		List<Appointment> list = dao.find(sql);
 		map.put("data", list);
 		return list;
 	}
 
 	@Override
 	public Integer del(Integer id) {
-		String hql = "delete from Consult where id="+id;
+		String hql = "delete from Appointment where id="+id;
 		return dao.executeHql(hql);
 	}
 
 	@Override
-	public Integer add(Consult consult) {
-		return (Integer) dao.save(consult);
+	public Integer add(Appointment appointment) {
+		return (Integer) dao.save(appointment);
 	}
 
 	@Override
-	public Integer update(Consult consult) {
-		dao.update(consult);
+	public Integer update(Appointment appointment) {
+		dao.update(appointment);
 		return 0;
 	}
 
 	@Override
-	public List<Consult> getById(Integer id, Map<String, Object> map) {
-		String hql = "from Consult where id="+id;
-		List<Consult> list = dao.find(hql);
+	public List<Appointment> getById(Integer id, Map<String, Object> map) {
+		String hql = "from Appointment where id="+id;
+		List<Appointment> list = dao.find(hql);
 		map.put("data", list);
 		return list;
 	}
