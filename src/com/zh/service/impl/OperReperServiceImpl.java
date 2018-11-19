@@ -23,9 +23,9 @@ public class OperReperServiceImpl implements OperReperService{
 	private BaseDaoI dao;
 
 	@Override
-	public List<OperReper> get(Map<String, Object> map) {
-		String sql="from OperReper";
-		List<OperReper> list = dao.find(sql);
+	public List<Map<String, Object>> get(Map<String, Object> map) {
+		String sql="SELECT i.*,u.name rname,b.name sname FROM oper_reper i LEFT JOIN geracomiumdb.repertory u ON i.rid=u.id left join staff b on i.sid=b.id";
+		List<Map<String, Object>> list = (List<Map<String, Object>>) dao.findBySql(sql);
 		map.put("data", list);
 		return list;
 	}

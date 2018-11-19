@@ -13,10 +13,15 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.alibaba.fastjson.JSON;
 import com.zh.base.BaseController;
 import com.zh.pojo.Admin;
+import com.zh.pojo.BedType;
 import com.zh.pojo.OperReper;
+import com.zh.pojo.Repertory;
+import com.zh.pojo.Staff;
 import com.zh.pojo.User;
 import com.zh.service.AdminService;
 import com.zh.service.OperReperService;
+import com.zh.service.RepertoryService;
+import com.zh.service.StaffService;
 import com.zh.service.UserService;
 
 /**
@@ -30,6 +35,10 @@ public class OperReperController extends BaseController {
 
 	@Autowired
 	OperReperService operReperService;
+	@Autowired
+	RepertoryService repertoryService;
+	@Autowired
+	StaffService staffService;
 
 	/**
 	 * 查询
@@ -60,7 +69,15 @@ public class OperReperController extends BaseController {
 	 */
 	@ResponseBody
 	@RequestMapping("add")
-	public String add(OperReper operReper) {
+	public String add(OperReper operReper, Map<String, Object> map) {
+		List<Repertory> list = repertoryService.getById(operReper.getRid(), map);
+		if(list == null || list.size() == 0){
+			return "false";
+		}
+		List<Staff> list2 = staffService.getById(operReper.getSid(), map);
+		if(list2 == null || list2.size() == 0){
+			return "error";
+		}
 		operReperService.add(operReper);
 		return "true";
 	}
@@ -71,7 +88,15 @@ public class OperReperController extends BaseController {
 	 */
 	@ResponseBody
 	@RequestMapping("update")
-	public String update(OperReper operReper) {
+	public String update(OperReper operReper, Map<String, Object> map) {
+		List<Repertory> list = repertoryService.getById(operReper.getRid(), map);
+		if(list == null || list.size() == 0){
+			return "false";
+		}
+		List<Staff> list2 = staffService.getById(operReper.getSid(), map);
+		if(list2 == null || list2.size() == 0){
+			return "error";
+		}
 		operReperService.update(operReper);
 		return "true";
 	}

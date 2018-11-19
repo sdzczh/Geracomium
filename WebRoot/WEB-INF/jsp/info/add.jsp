@@ -28,7 +28,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 							    <input type="text" class="form-control" id="userId" placeholder="老人id">
 							  </div>
 							   <div class="form-group">
-							    <label for="exampleInputEmail1"></label>
+							    <label for="exampleInputEmail1">床位ID</label>
 							    <input type="text" class="form-control" id="bedId" placeholder="床位ID">
 							  </div>
 							  <div class="form-group">
