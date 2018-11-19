@@ -23,9 +23,9 @@ public class VisitServiceImpl implements VisitService{
 	private BaseDaoI dao;
 
 	@Override
-	public List<Visit> get(Map<String, Object> map) {
-		String sql="from Visit";
-		List<Visit> list = dao.find(sql);
+	public List<Map<String, Object>> get(Map<String, Object> map) {
+		String sql="SELECT i.*,u.name lname FROM geracomiumdb.visit i LEFT JOIN geracomiumdb.user u ON i.userId=u.id";
+		List<Map<String, Object>> list = (List<Map<String, Object>>) dao.findBySql(sql);
 		map.put("data", list);
 		return list;
 	}
@@ -52,7 +52,14 @@ public class VisitServiceImpl implements VisitService{
 	public List<Visit> getById(Integer id, Map<String, Object> map) {
 		String hql = "from Visit where id="+id;
 		List<Visit> list = dao.find(hql);
-		map.put("data", list.get(0));
+		Visit visit = list.get(0);
+		map.put("data", visit);
+		hql = "from User where id="+visit.getUserId();
+		List<User> userList = dao.find(hql);
+		map.put("data", visit);
+		if(userList != null && userList.size() > 0){
+			map.put("name", userList.get(0).getName());
+		}
 		return list;
 	}
 	

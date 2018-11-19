@@ -30,6 +30,8 @@ public class VisitController extends BaseController {
 
 	@Autowired
 	VisitService visitService;
+	@Autowired
+	UserService userService;
 
 	/**
 	 * 查询
@@ -60,7 +62,11 @@ public class VisitController extends BaseController {
 	 */
 	@ResponseBody
 	@RequestMapping("add")
-	public String add(Visit visit) {
+	public String add(Visit visit, Map<String, Object> map) {
+		List<User> list = userService.getById(visit.getUserId(), map);
+		if(list == null || list.size() == 0){
+			return "false";
+		}
 		visitService.add(visit);
 		return "true";
 	}
