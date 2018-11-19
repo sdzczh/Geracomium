@@ -14,9 +14,11 @@ import com.alibaba.fastjson.JSON;
 import com.zh.base.BaseController;
 import com.zh.pojo.Admin;
 import com.zh.pojo.Device;
+import com.zh.pojo.Staff;
 import com.zh.pojo.User;
 import com.zh.service.AdminService;
 import com.zh.service.DeviceService;
+import com.zh.service.StaffService;
 import com.zh.service.UserService;
 
 /**
@@ -30,6 +32,8 @@ public class DeviceController extends BaseController {
 
 	@Autowired
 	DeviceService deviceService;
+	@Autowired
+	StaffService staffService;
 
 	/**
 	 * 查询
@@ -60,7 +64,11 @@ public class DeviceController extends BaseController {
 	 */
 	@ResponseBody
 	@RequestMapping("add")
-	public String add(Device device) {
+	public String add(Device device, Map<String, Object> map) {
+		List<Staff> list2 = staffService.getById(device.getUserId(), map);
+		if(list2 == null || list2.size() == 0){
+			return "false";
+		}
 		deviceService.add(device);
 		return "true";
 	}
@@ -71,7 +79,11 @@ public class DeviceController extends BaseController {
 	 */
 	@ResponseBody
 	@RequestMapping("update")
-	public String update(Device device) {
+	public String update(Device device, Map<String, Object> map) {
+		List<Staff> list2 = staffService.getById(device.getUserId(), map);
+		if(list2 == null || list2.size() == 0){
+			return "false";
+		}
 		deviceService.update(device);
 		return "true";
 	}

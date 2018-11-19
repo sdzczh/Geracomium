@@ -11,7 +11,7 @@ import com.zh.pojo.User;
 
 public interface DeviceService {
 
-	List<Device> get(Map<String, Object> map);
+	List<Map<String, Object>> get(Map<String, Object> map);
 
 	Integer del(Integer id);
 

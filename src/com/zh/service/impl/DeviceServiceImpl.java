@@ -23,9 +23,9 @@ public class DeviceServiceImpl implements DeviceService{
 	private BaseDaoI dao;
 
 	@Override
-	public List<Device> get(Map<String, Object> map) {
-		String sql="from Device";
-		List<Device> list = dao.find(sql);
+	public List<Map<String, Object>> get(Map<String, Object> map) {
+		String sql="SELECT i.*,b.name uname FROM device i left join staff b on i.userId=b.id";
+		List<Map<String, Object>> list = (List<Map<String, Object>>) dao.findBySql(sql);
 		map.put("data", list);
 		return list;
 	}
