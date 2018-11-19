@@ -37,10 +37,10 @@ public class ConsultController extends BaseController {
 	 * @param consult
 	 * @return
 	 */
-	@RequestMapping("getConsult")
+	@RequestMapping("get")
 	public String get(Map<String, Object> map) {
 		consultService.get(map);
-		return "true";
+		return "consult/list";
 	}
 	/**
 	 * 删除

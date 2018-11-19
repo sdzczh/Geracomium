@@ -53,15 +53,14 @@
                 <ul class="nav" id="main-menu">
 
                     
-                    
                     <li>
                         <a href="${domain}/admin/main.action" ><i class="fa fa-qrcode"></i> 首页</a>
                     </li>
                    <li>
-                        <a href="#"><i class="fa fa-sitemap"></i> 接待管理<span class="fa arrow"></span></a>
+                        <a href="#" class="active-menu"><i class="fa fa-sitemap"></i> 接待管理<span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level">
                             <li>
-                                <a href="${domain}/consult/get.action">咨询登记</a>
+                                <a href="${domain}/consult/get.action" class="active-menu">咨询登记</a>
                             </li>
                             <li>
                                 <a href="${domain}/appointment/get.action">预约登记</a>
@@ -72,10 +71,10 @@
                         <a href="${domain}/info/get.action" ><i class="fa fa-qrcode"></i> 费用管理</a>
                     </li>
                     <li>
-                        <a href="#" class="active-menu"><i class="fa fa-qrcode"></i> 老人管理<span class="fa arrow"></span></a>
+                        <a href="#"><i class="fa fa-qrcode"></i> 老人管理<span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level">
                             <li>
-                                <a href="${domain}/user/get.action" class="active-menu">老人信息管理</a>
+                                <a href="${domain}/user/get.action">老人信息管理</a>
                             </li>
                             <li>
                                 <a href="${domain}/out/get.action">外出登记</a>
@@ -140,10 +139,10 @@
         <div id="page-wrapper" >
 		  <div class="header"> 
                         <h1 class="page-header">
-                            	用户管理	 <small>显示所有老人信息</small>
+                            	接待管理	 <small>咨询登记</small>
                         </h1> 
 						<ol class="breadcrumb">
-					  <li><a style="text-decoration:none" onClick="add()" href="javascript:;" class='btn btn-danger' title="添加用户">添加用户</a></li>
+					  <li><a style="text-decoration:none" onClick="add()" href="javascript:;" class='btn btn-danger' title="添加用户">添加记录</a></li>
 					</ol> 
 									
 		</div>
@@ -155,18 +154,17 @@
                     <!-- Advanced Tables -->
                     <div class="panel panel-default">
                         <div class="panel-heading">
-                             所有用户信息
+                             所有访客咨询信息
                         </div>
                         <div class="panel-body">
                             <div class="table-responsive"> 
                                 <table class="table table-striped table-bordered table-hover" id="dataTables-example" data-toggle="table" >
                                     <thead>
                                         <tr>
-                                            <th>老人编号</th>
-                                            <th>姓名</th>
-                                            <th>年龄</th>
-                                            <th>性别</th>
-                                            <th>床位号</th>
+                                            <th>编号</th>
+                                            <th>访客姓名</th>
+                                            <th>咨询内容</th>
+                                            <th>创建时间</th>
                                             <th>操作</th>
                                         </tr>
                                     </thead>
@@ -175,12 +173,8 @@
                                         <tr class="odd gradeX">
                                             <td>${list.id }</td>
                                             <td>${list.name }</td>
-                                            <td>${list.age }</td>
-                                            <td>
-                                            	<c:if test="${list.sex==0}">女</c:if>
-                                            	<c:if test="${list.sex==1}">男</c:if>
-                                            </td>
-                                            <td>${list.bedId }</td>
+                                            <td>${list.content }</td>
+                                            <td>${list.create_time }</td>
                                             <td align="center">
         <a style="text-decoration:none" onclick="edit(${list.id})" class='btn btn-default' title="编辑">编辑</a>
 		<a style="text-decoration:none" onClick="del(${list.id})" href="javascript:;" class='btn btn-danger' title="删除">删除</a>
@@ -216,13 +210,13 @@
     </script>
 	<script type="text/javascript">
 	function del(id){
-			layer.confirm('确认要删除该用户吗？',function(index){
+			layer.confirm('确认要删除该记录吗？',function(index){
 		$.ajax({
 			type: 'POST',
-			url: '${domain}/user/del.action',
+			url: '${domain}/consult/del.action',
 			data: {id : id},
 			success: function(data){
-				layer.msg('该用户已删除!',{icon: 1,time:2000});
+				layer.msg('该记录已删除!',{icon: 1,time:2000});
 				setTimeout(function(){
 					window.location.reload();
 				},2000)
@@ -239,7 +233,7 @@
 		    shadeClose: true,
 		    shade: 0.8,
 		    area: ['580px', '50%'],
-		    content: '${domain}/user/toUpdate.action?&id='+id,
+		    content: '${domain}/consult/toUpdate.action?&id='+id,
 		    end: function () {
 		       location.reload();
 		    }
@@ -251,7 +245,7 @@
 		    shadeClose: true,
 		    shade: 0.8,
 		    area: ['580px', '50%'],
-		    content: '${domain}/user/toAdd.action',
+		    content: '${domain}/consult/toAdd.action',
 		    end: function () {
 		       location.reload();
 		    }

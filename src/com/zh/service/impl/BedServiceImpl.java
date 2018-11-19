@@ -13,6 +13,7 @@ import com.zh.pojo.Bed;
 import com.zh.pojo.User;
 import com.zh.service.BedService;
 import com.zh.service.UserService;
+import com.zh.util.DateUtils;
 @SuppressWarnings("unchecked")
 @Service
 @Transactional
@@ -37,6 +38,7 @@ public class BedServiceImpl implements BedService{
 
 	@Override
 	public Integer add(Bed bed) {
+		bed.setCreate_time(DateUtils.getCurrentTimeStr());
 		return (Integer) dao.save(bed);
 	}
 
@@ -50,7 +52,7 @@ public class BedServiceImpl implements BedService{
 	public List<Bed> getById(Integer id, Map<String, Object> map) {
 		String hql = "from Bed where id="+id;
 		List<Bed> list = dao.find(hql);
-		map.put("data", list);
+		map.put("data", list.get(0));
 		return list;
 	}
 	

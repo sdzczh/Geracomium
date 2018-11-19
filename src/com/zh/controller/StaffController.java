@@ -37,7 +37,7 @@ public class StaffController extends BaseController {
 	 * @param staff
 	 * @return
 	 */
-	@RequestMapping("getStaff")
+	@RequestMapping("get")
 	public String get(Map<String, Object> map) {
 		staffService.get(map);
 		return "true";

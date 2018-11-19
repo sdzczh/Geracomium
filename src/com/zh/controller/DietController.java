@@ -37,7 +37,7 @@ public class DietController extends BaseController {
 	 * @param diet
 	 * @return
 	 */
-	@RequestMapping("getDiet")
+	@RequestMapping("get")
 	public String get(Map<String, Object> map) {
 		dietService.get(map);
 		return "true";

@@ -13,6 +13,7 @@ import com.zh.pojo.Staff;
 import com.zh.pojo.User;
 import com.zh.service.StaffService;
 import com.zh.service.UserService;
+import com.zh.util.DateUtils;
 @SuppressWarnings("unchecked")
 @Service
 @Transactional
@@ -37,6 +38,7 @@ public class StaffServiceImpl implements StaffService{
 
 	@Override
 	public Integer add(Staff staff) {
+		staff.setCreate_time(DateUtils.getCurrentTimeStr());
 		return (Integer) dao.save(staff);
 	}
 
@@ -50,7 +52,7 @@ public class StaffServiceImpl implements StaffService{
 	public List<Staff> getById(Integer id, Map<String, Object> map) {
 		String hql = "from Staff where id="+id;
 		List<Staff> list = dao.find(hql);
-		map.put("data", list);
+		map.put("data", list.get(0));
 		return list;
 	}
 	

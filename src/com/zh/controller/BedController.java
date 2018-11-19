@@ -37,7 +37,7 @@ public class BedController extends BaseController {
 	 * @param bed
 	 * @return
 	 */
-	@RequestMapping("getBed")
+	@RequestMapping("get")
 	public String get(Map<String, Object> map) {
 		bedService.get(map);
 		return "true";

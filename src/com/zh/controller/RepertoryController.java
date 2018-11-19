@@ -37,7 +37,7 @@ public class RepertoryController extends BaseController {
 	 * @param repertory
 	 * @return
 	 */
-	@RequestMapping("getRepertory")
+	@RequestMapping("get")
 	public String get(Map<String, Object> map) {
 		repertoryService.get(map);
 		return "true";

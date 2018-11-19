@@ -13,6 +13,7 @@ import com.zh.pojo.Out;
 import com.zh.pojo.User;
 import com.zh.service.OutService;
 import com.zh.service.UserService;
+import com.zh.util.DateUtils;
 @SuppressWarnings("unchecked")
 @Service
 @Transactional
@@ -37,6 +38,7 @@ public class OutServiceImpl implements OutService{
 
 	@Override
 	public Integer add(Out out) {
+		out.setCreate_time(DateUtils.getCurrentTimeStr());
 		return (Integer) dao.save(out);
 	}
 
@@ -50,7 +52,7 @@ public class OutServiceImpl implements OutService{
 	public List<Out> getById(Integer id, Map<String, Object> map) {
 		String hql = "from Out where id="+id;
 		List<Out> list = dao.find(hql);
-		map.put("data", list);
+		map.put("data", list.get(0));
 		return list;
 	}
 	

@@ -13,6 +13,7 @@ import com.zh.pojo.Device;
 import com.zh.pojo.User;
 import com.zh.service.DeviceService;
 import com.zh.service.UserService;
+import com.zh.util.DateUtils;
 @SuppressWarnings("unchecked")
 @Service
 @Transactional
@@ -37,6 +38,7 @@ public class DeviceServiceImpl implements DeviceService{
 
 	@Override
 	public Integer add(Device device) {
+		device.setCreate_time(DateUtils.getCurrentTimeStr());
 		return (Integer) dao.save(device);
 	}
 
@@ -50,7 +52,7 @@ public class DeviceServiceImpl implements DeviceService{
 	public List<Device> getById(Integer id, Map<String, Object> map) {
 		String hql = "from Device where id="+id;
 		List<Device> list = dao.find(hql);
-		map.put("data", list);
+		map.put("data", list.get(0));
 		return list;
 	}
 	

@@ -13,6 +13,7 @@ import com.zh.pojo.Info;
 import com.zh.pojo.User;
 import com.zh.service.InfoService;
 import com.zh.service.UserService;
+import com.zh.util.DateUtils;
 @SuppressWarnings("unchecked")
 @Service
 @Transactional
@@ -37,6 +38,7 @@ public class InfoServiceImpl implements InfoService{
 
 	@Override
 	public Integer add(Info info) {
+		info.setCreate_time(DateUtils.getCurrentTimeStr());
 		return (Integer) dao.save(info);
 	}
 
@@ -50,7 +52,7 @@ public class InfoServiceImpl implements InfoService{
 	public List<Info> getById(Integer id, Map<String, Object> map) {
 		String hql = "from Info where id="+id;
 		List<Info> list = dao.find(hql);
-		map.put("data", list);
+		map.put("data", list.get(0));
 		return list;
 	}
 	

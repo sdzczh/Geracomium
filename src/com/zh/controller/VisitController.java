@@ -37,7 +37,7 @@ public class VisitController extends BaseController {
 	 * @param visit
 	 * @return
 	 */
-	@RequestMapping("getVisit")
+	@RequestMapping("get")
 	public String get(Map<String, Object> map) {
 		visitService.get(map);
 		return "true";

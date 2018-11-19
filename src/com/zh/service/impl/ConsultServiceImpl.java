@@ -13,6 +13,7 @@ import com.zh.pojo.Consult;
 import com.zh.pojo.User;
 import com.zh.service.ConsultService;
 import com.zh.service.UserService;
+import com.zh.util.DateUtils;
 @SuppressWarnings("unchecked")
 @Service
 @Transactional
@@ -37,6 +38,7 @@ public class ConsultServiceImpl implements ConsultService{
 
 	@Override
 	public Integer add(Consult consult) {
+		consult.setCreate_time(DateUtils.getCurrentTimeStr());
 		return (Integer) dao.save(consult);
 	}
 
@@ -50,7 +52,7 @@ public class ConsultServiceImpl implements ConsultService{
 	public List<Consult> getById(Integer id, Map<String, Object> map) {
 		String hql = "from Consult where id="+id;
 		List<Consult> list = dao.find(hql);
-		map.put("data", list);
+		map.put("data", list.get(0));
 		return list;
 	}
 	

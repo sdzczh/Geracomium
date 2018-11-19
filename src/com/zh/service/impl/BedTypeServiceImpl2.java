@@ -50,7 +50,7 @@ public class BedTypeServiceImpl2 implements BedTypeService{
 	public List<BedType> getById(Integer id, Map<String, Object> map) {
 		String hql = "from BedType where id="+id;
 		List<BedType> list = dao.find(hql);
-		map.put("data", list);
+		map.put("data", list.get(0));
 		return list;
 	}
 	

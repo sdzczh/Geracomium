@@ -37,7 +37,7 @@ public class RegisterController extends BaseController {
 	 * @param register
 	 * @return
 	 */
-	@RequestMapping("getRegister")
+	@RequestMapping("get")
 	public String get(Map<String, Object> map) {
 		registerService.get(map);
 		return "true";

@@ -37,7 +37,7 @@ public class BedTypeController extends BaseController {
 	 * @param bedType
 	 * @return
 	 */
-	@RequestMapping("getBedType")
+	@RequestMapping("get")
 	public String get(Map<String, Object> map) {
 		bedTypeService.get(map);
 		return "true";

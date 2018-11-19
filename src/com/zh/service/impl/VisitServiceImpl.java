@@ -12,6 +12,7 @@ import com.zh.dao.inte.BaseDaoI;
 import com.zh.pojo.Visit;
 import com.zh.pojo.User;
 import com.zh.service.VisitService;
+import com.zh.util.DateUtils;
 import com.zh.service.UserService;
 @SuppressWarnings("unchecked")
 @Service
@@ -37,6 +38,7 @@ public class VisitServiceImpl implements VisitService{
 
 	@Override
 	public Integer add(Visit visit) {
+		visit.setCreate_time(DateUtils.getCurrentTimeStr());
 		return (Integer) dao.save(visit);
 	}
 
@@ -50,7 +52,7 @@ public class VisitServiceImpl implements VisitService{
 	public List<Visit> getById(Integer id, Map<String, Object> map) {
 		String hql = "from Visit where id="+id;
 		List<Visit> list = dao.find(hql);
-		map.put("data", list);
+		map.put("data", list.get(0));
 		return list;
 	}
 	

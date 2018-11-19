@@ -13,6 +13,7 @@ import com.zh.pojo.Appointment;
 import com.zh.pojo.User;
 import com.zh.service.AppointmentService;
 import com.zh.service.UserService;
+import com.zh.util.DateUtils;
 @SuppressWarnings("unchecked")
 @Service
 @Transactional
@@ -37,6 +38,7 @@ public class AppointmentServiceImpl implements AppointmentService{
 
 	@Override
 	public Integer add(Appointment appointment) {
+		appointment.setCreate_time(DateUtils.getCurrentTimeStr());
 		return (Integer) dao.save(appointment);
 	}
 
@@ -50,7 +52,7 @@ public class AppointmentServiceImpl implements AppointmentService{
 	public List<Appointment> getById(Integer id, Map<String, Object> map) {
 		String hql = "from Appointment where id="+id;
 		List<Appointment> list = dao.find(hql);
-		map.put("data", list);
+		map.put("data", list.get(0));
 		return list;
 	}
 	

@@ -37,7 +37,7 @@ public class DeviceController extends BaseController {
 	 * @param device
 	 * @return
 	 */
-	@RequestMapping("getDevice")
+	@RequestMapping("get")
 	public String get(Map<String, Object> map) {
 		deviceService.get(map);
 		return "true";

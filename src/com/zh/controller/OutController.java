@@ -37,7 +37,7 @@ public class OutController extends BaseController {
 	 * @param out
 	 * @return
 	 */
-	@RequestMapping("getOut")
+	@RequestMapping("get")
 	public String get(Map<String, Object> map) {
 		outService.get(map);
 		return "true";

@@ -13,6 +13,7 @@ import com.zh.pojo.Nurse;
 import com.zh.pojo.User;
 import com.zh.service.NurseService;
 import com.zh.service.UserService;
+import com.zh.util.DateUtils;
 @SuppressWarnings("unchecked")
 @Service
 @Transactional
@@ -37,6 +38,7 @@ public class NurseServiceImpl implements NurseService{
 
 	@Override
 	public Integer add(Nurse nurse) {
+		nurse.setCreate_time(DateUtils.getCurrentTimeStr());
 		return (Integer) dao.save(nurse);
 	}
 
@@ -50,7 +52,7 @@ public class NurseServiceImpl implements NurseService{
 	public List<Nurse> getById(Integer id, Map<String, Object> map) {
 		String hql = "from Nurse where id="+id;
 		List<Nurse> list = dao.find(hql);
-		map.put("data", list);
+		map.put("data", list.get(0));
 		return list;
 	}
 	

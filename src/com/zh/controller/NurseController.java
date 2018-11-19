@@ -37,7 +37,7 @@ public class NurseController extends BaseController {
 	 * @param nurse
 	 * @return
 	 */
-	@RequestMapping("getNurse")
+	@RequestMapping("get")
 	public String get(Map<String, Object> map) {
 		nurseService.get(map);
 		return "true";

@@ -6,7 +6,6 @@ import java.util.regex.Pattern;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
-import com.zh.glob.GolbParams;
 
 /**
  * @描述 String字符串工具类
@@ -45,24 +44,7 @@ public class StrUtils {
 		}
 		return false;
 	}
-	
-	/**
-	 * @描述 获取随机数<br>
-	 * @param len 随机数长度
-	 * @return 随机数
-	 * @author  
-	 * @版本 v1.0.0
-	 * @日期 2017-6-27
-	 */
-	public static String getCode(int len){
-		Random ran = new Random();
-		StringBuffer str = new StringBuffer();
-		for(int i=0;i<len;i++){
-			str.append(GolbParams.ROUND_NUM[ran.nextInt(len)]);
-		}
-		return str.toString();
-	}
-	
+
 	/**
 	 * @描述 对象格式化为JSON<br>
 	 * @param obj 返回值对象
@@ -92,7 +74,4 @@ public class StrUtils {
 		}
 	}
 	
-	public static void main(String[] args) {
-		System.out.println(getCode(8));
-	}
 }

@@ -13,6 +13,7 @@ import com.zh.pojo.OperReper;
 import com.zh.pojo.User;
 import com.zh.service.OperReperService;
 import com.zh.service.UserService;
+import com.zh.util.DateUtils;
 @SuppressWarnings("unchecked")
 @Service
 @Transactional
@@ -37,6 +38,7 @@ public class OperReperServiceImpl implements OperReperService{
 
 	@Override
 	public Integer add(OperReper operReper) {
+		operReper.setCreate_time(DateUtils.getCurrentTimeStr());
 		return (Integer) dao.save(operReper);
 	}
 
@@ -50,7 +52,7 @@ public class OperReperServiceImpl implements OperReperService{
 	public List<OperReper> getById(Integer id, Map<String, Object> map) {
 		String hql = "from OperReper where id="+id;
 		List<OperReper> list = dao.find(hql);
-		map.put("data", list);
+		map.put("data", list.get(0));
 		return list;
 	}
 	

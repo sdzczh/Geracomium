@@ -13,6 +13,7 @@ import com.zh.pojo.Diet;
 import com.zh.pojo.User;
 import com.zh.service.DietService;
 import com.zh.service.UserService;
+import com.zh.util.DateUtils;
 @SuppressWarnings("unchecked")
 @Service
 @Transactional
@@ -37,6 +38,7 @@ public class DietServiceImpl implements DietService{
 
 	@Override
 	public Integer add(Diet diet) {
+		diet.setCreate_time(DateUtils.getCurrentTimeStr());
 		return (Integer) dao.save(diet);
 	}
 
@@ -50,7 +52,7 @@ public class DietServiceImpl implements DietService{
 	public List<Diet> getById(Integer id, Map<String, Object> map) {
 		String hql = "from Diet where id="+id;
 		List<Diet> list = dao.find(hql);
-		map.put("data", list);
+		map.put("data", list.get(0));
 		return list;
 	}
 	

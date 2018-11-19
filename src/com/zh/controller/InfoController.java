@@ -37,7 +37,7 @@ public class InfoController extends BaseController {
 	 * @param info
 	 * @return
 	 */
-	@RequestMapping("getInfo")
+	@RequestMapping("get")
 	public String get(Map<String, Object> map) {
 		infoService.get(map);
 		return "true";

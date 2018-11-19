@@ -13,6 +13,7 @@ import com.zh.pojo.Register;
 import com.zh.pojo.User;
 import com.zh.service.RegisterService;
 import com.zh.service.UserService;
+import com.zh.util.DateUtils;
 @SuppressWarnings("unchecked")
 @Service
 @Transactional
@@ -37,6 +38,7 @@ public class RegisterServiceImpl implements RegisterService{
 
 	@Override
 	public Integer add(Register register) {
+		register.setCreate_time(DateUtils.getCurrentTimeStr());
 		return (Integer) dao.save(register);
 	}
 
@@ -50,7 +52,7 @@ public class RegisterServiceImpl implements RegisterService{
 	public List<Register> getById(Integer id, Map<String, Object> map) {
 		String hql = "from Register where id="+id;
 		List<Register> list = dao.find(hql);
-		map.put("data", list);
+		map.put("data", list.get(0));
 		return list;
 	}
 	

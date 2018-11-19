@@ -50,7 +50,7 @@ public class RepertoryServiceImpl implements RepertoryService{
 	public List<Repertory> getById(Integer id, Map<String, Object> map) {
 		String hql = "from Repertory where id="+id;
 		List<Repertory> list = dao.find(hql);
-		map.put("data", list);
+		map.put("data", list.get(0));
 		return list;
 	}
 	

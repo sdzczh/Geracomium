@@ -26,7 +26,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="${domain}/admin/getUserList.action"><strong><i class="icon fa fa-plane"></i>凯达敬老院后台管理</strong></a>
+                <a class="navbar-brand" href="${domain}/admin/getUserList.action"><strong>凯达敬老院后台管理</strong></a>
 				<div id="sideNav" href="">
 		<a href="${domain}/user/index.action"><i class="fa fa-bars icon">Back</i> </a>
 		</div>
@@ -51,16 +51,80 @@
         <nav class="navbar-default navbar-side" role="navigation">
             <div class="sidebar-collapse">
                 <ul class="nav" id="main-menu">
-
-                    
                     <li>
                         <a href="${domain}/admin/main.action"  class="active-menu"><i class="fa fa-qrcode"></i> 首页</a>
                     </li>
                     <li>
-                        <a href="${domain}/user/get.action" ><i class="fa fa-qrcode"></i> 老人管理</a>
+                        <a href="#"><i class="fa fa-sitemap"></i> 接待管理<span class="fa arrow"></span></a>
+                        <ul class="nav nav-second-level">
+                            <li>
+                                <a href="${domain}/consult/get.action">咨询登记</a>
+                            </li>
+                            <li>
+                                <a href="${domain}/appointment/get.action">预约登记</a>
+                            </li>
+						</ul>
                     </li>
                     <li>
-                        <a href="${domain}/admin/getOrderList.action"><i class="fa fa-qrcode"></i> 订单管理</a>
+                        <a href="${domain}/info/get.action" ><i class="fa fa-qrcode"></i> 费用管理</a>
+                    </li>
+                    <li>
+                        <a href="#"><i class="fa fa-qrcode"></i> 老人管理<span class="fa arrow"></span></a>
+                        <ul class="nav nav-second-level">
+                            <li>
+                                <a href="${domain}/user/get.action">老人信息管理</a>
+                            </li>
+                            <li>
+                                <a href="${domain}/out/get.action">外出登记</a>
+                            </li>
+                            <li>
+                                <a href="${domain}/visit/get.action">探视来访</a>
+                            </li>
+						</ul>
+                    </li>
+                    <li>
+                        <a href="#"><i class="fa fa-qrcode"></i> 人事管理<span class="fa arrow"></span></a>
+                        <ul class="nav nav-second-level">
+                            <li>
+                                <a href="${domain}/staff/get.action">员工管理</a>
+                            </li>
+						</ul>
+                    </li>
+                    <li>
+                        <a href="#"><i class="fa fa-qrcode"></i> 床位管理<span class="fa arrow"></span></a>
+                        <ul class="nav nav-second-level">
+                            <li>
+                                <a href="${domain}/bed/get.action">床位管理</a>
+                            </li>
+                            <li>
+                                <a href="${domain}/bedType/get.action">床位类型管理</a>
+                            </li>
+						</ul>
+                    </li>
+                    <li>
+                        <a href="#"><i class="fa fa-qrcode"></i> 库存管理<span class="fa arrow"></span></a>
+                        <ul class="nav nav-second-level">
+                            <li>
+                                <a href="${domain}/repertory/get.action">仓库管理</a>
+                            </li>
+                            <li>
+                                <a href="${domain}/operReper/get.action">入库/出库管理</a>
+                            </li>
+						</ul>
+                    </li>
+                    <li>
+                        <a href="#"><i class="fa fa-qrcode"></i> 服务管理<span class="fa arrow"></span></a>
+                        <ul class="nav nav-second-level">
+                            <li>
+                                <a href="${domain}/device/get.action">设备管理</a>
+                            </li>
+                            <li>
+                                <a href="${domain}/nurse/get.action">护工管理</a>
+                            </li>
+                            <li>
+                                <a href="${domain}/diet/get.action">饮食管理</a>
+                            </li>
+						</ul>
                     </li>
                     
                     
@@ -73,10 +137,8 @@
         <div id="page-wrapper" >
 		  <div class="header"> 
                         <h1 class="page-header">
-                            	用户管理	 <small>显示所有老人信息</small>
+                            	欢迎使用凯达敬老院后台管理系统
                         </h1> 
-						<ol class="breadcrumb">
-					</ol> 
 									
 		</div>
 		
@@ -94,6 +156,7 @@
     <script src="${domain}/js/jquery.dataTables.js"></script>
     <script src="${domain}/js/dataTables.bootstrap.js"></script>
     <script src="${domain}/js/bootstrap-table.js"></script>
+    <script src="${domain}/js/custom.js"></script>
 
 </body>
 </html>

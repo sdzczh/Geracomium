@@ -37,7 +37,7 @@ public class OperReperController extends BaseController {
 	 * @param operReper
 	 * @return
 	 */
-	@RequestMapping("getOperReper")
+	@RequestMapping("get")
 	public String get(Map<String, Object> map) {
 		operReperService.get(map);
 		return "true";
