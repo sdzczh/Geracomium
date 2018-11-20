@@ -139,7 +139,7 @@
         <div id="page-wrapper" >
 		  <div class="header"> 
                         <h1 class="page-header">
-                            	接待管理	 <small>预约登记</small>
+                            	费用管理	 <small>费用</small>
                         </h1> 
 						<ol class="breadcrumb">
 					  <li><a style="text-decoration:none" onClick="add()" href="javascript:;" class='btn btn-danger' title="添加用户">添加记录</a></li>
@@ -154,7 +154,7 @@
                     <!-- Advanced Tables -->
                     <div class="panel panel-default">
                         <div class="panel-heading">
-                             所有访客预约登记信息
+                             所有消费信息
                         </div>
                         <div class="panel-body">
                             <div class="table-responsive"> 
