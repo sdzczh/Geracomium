@@ -20,9 +20,9 @@ public class SecurityServlet extends HttpServlet implements Filter{
 	    public void doFilter(ServletRequest arg0, ServletResponse arg1, FilterChain arg2) throws IOException, ServletException {
 	           HttpServletRequest request=(HttpServletRequest)arg0;   
 	           HttpServletResponse response  =(HttpServletResponse) arg1;    
-	           Admin admin = (Admin) request.getSession().getAttribute("admin");
+	           Object admin = request.getSession().getAttribute("admin");
 	           String url=request.getRequestURI();   
-	           if(url.indexOf("login")<0){
+	           if(url.indexOf("login")<0 && url.indexOf("userLogin")<0){
 		           if(admin==null || "".equals(admin) ) {      
 		                    response.sendRedirect(request.getContextPath()+"/login.jsp");
 		            }else{

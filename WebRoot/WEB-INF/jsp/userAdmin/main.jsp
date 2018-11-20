@@ -61,9 +61,6 @@
                                 <a href="${domain}/consult/get.action">设备信息</a>
                             </li>
                             <li>
-                                <a href="${domain}/appointment/get.action">饮食信息</a>
-                            </li>
-                            <li>
                                 <a href="${domain}/appointment/get.action">护理信息</a>
                             </li>
 						</ul>
@@ -79,24 +76,26 @@
                         <h1 class="page-header">
                             	欢迎使用凯达敬老院后台管理系统
                         </h1> 
-                        <h2><button onclick="edit()">修改密码</button></h2>
+                        <h2><button onclick="edit()">修改个人信息</button></h2>
                         
                          <div style="padding: 20px">
  						  <form>
 							   <div class="form-group">
-							    <label for="exampleInputEmail1">ID：${id }</label>
+							    <label for="exampleInputEmail1">ID：${data.id }</label>
 							  </div>
 							   <div class="form-group">
-							    <label for="exampleInputEmail1">姓名：${name }</label>
+							    <label for="exampleInputEmail1">姓名：${data.name }</label>
 							  </div>
 							   <div class="form-group">
-							    <label for="exampleInputEmail1">床位ID：${bedId }</label>
+							    <label for="exampleInputEmail1">床位ID：${data.bedId }</label>
 							  </div>
 							  <div class="form-group">
-							    <label for="exampleInputEmail1">入院时间：${create_time }</label>
+							    <label for="exampleInputEmail1">性别：<c:if test="${data.sex==0 }">女</c:if>
+							    									<c:if test="${data.sex==1 }">男</c:if>
+							    </label>
 							  </div>
 							  <div class="form-group">
-							    <label for="exampleInputEmail1">出院时间：${exit_time }</label>
+							    <label for="exampleInputEmail1">年龄：${data.age }</label>
 							  </div>
 							  <div class="form-group">
 							    <label for="exampleInputEmail1">共计 <b>${num }</b> 天，每天床位价格为<font style="color: red">${price }</font>元，消费总金额<font style="color: red">${amount }</font>元</label>

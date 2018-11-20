@@ -67,12 +67,14 @@ public class UserAdminController extends BaseController {
 	public String toUpdate() {
 		return "userAdmin/update";
 	}
+	@RequestMapping("userLogin")
+	public String userLogin() {
+		return "userLogin";
+	}
 	@RequestMapping("main")
-	public String main(HttpSession session) {
-		Object admin = session.getAttribute("admin");
-		if(admin == null){
-			return "login";
-		}
+	public String main(HttpSession session, Map<String, Object> map) {
+		User user = (User) session.getAttribute("admin");
+		map.put("data", user);
 		return "userAdmin/main";
 	}
 }

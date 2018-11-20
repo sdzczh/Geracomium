@@ -27,7 +27,7 @@
 				<center>
 				<input type="button" onclick="login()" value="登录" class="btn btn-primary" id="js-btn-login" style="width: 40%;margin-left: 30%">
 				</center>
-				<!-- <a href="#">Register</a> -->
+				<a href="${pageContext.request.contextPath}/userAdmin/userLogin.action">用户登录</a>
 			</div>
 		</form><!-- form -->
 	</section><!-- content -->

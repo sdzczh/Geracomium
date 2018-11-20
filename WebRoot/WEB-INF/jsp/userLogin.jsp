@@ -14,9 +14,9 @@
 <div class="container">
 	<section id="content">
 		<form action="">
-			<h1>管理员登录</h1>
+			<h1>用户登录</h1>
 			<div>
-				<input type="text" placeholder="账号" required="" id="account" />
+				<input type="text" placeholder="账号" required="" id="id" />
 			</div>
 			<div>
 				<input type="password" placeholder="密码" required="" id="password" />
@@ -27,7 +27,7 @@
 				<center>
 				<input type="button" onclick="login()" value="登录" class="btn btn-primary" id="js-btn-login" style="width: 40%;margin-left: 30%">
 				</center>
-				<a href="${pageContext.request.contextPath}/userAdmin/userLogin.action">用户登录</a>
+				<a href="${pageContext.request.contextPath}/admin/exit.action">管理员登录</a>
 				<!-- <a href="#">Register</a> -->
 			</div>
 		</form><!-- form -->
@@ -37,15 +37,15 @@
 
 <script type="text/javascript">
 function login(){
-	var account = $("#account").val();
+	var id = $("#id").val();
 	var password = $("#password").val();
-	$.post("${pageContext.request.contextPath}/admin/login.action",{'account' : account, 'password' : password},function(result){
+	$.post("${pageContext.request.contextPath}/userAdmin/login.action",{id : id, 'password' : password},function(result){
 		if(result == 'false'){
 			layer.msg('账号或密码错误');
 			window.setTimeout("window.location.reload();",1000);
 		}
 		if(result == 'true'){
-			window.location.href = "${pageContext.request.contextPath}/admin/main.action";
+			window.location.href = "${pageContext.request.contextPath}/userAdmin/main.action";
 		}
 	})
 }
