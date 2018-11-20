@@ -1,6 +1,7 @@
 package com.zh.pojo;
 
 import java.io.Serializable;
+import java.math.BigDecimal;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -19,6 +20,7 @@ public class Info implements Serializable{
 	private Integer userId;
 	private Integer bedId;
 	private Integer state;
+	private BigDecimal amount;
 	private String create_time;
 	private String exit_time;
 	public Integer getId() {
@@ -38,6 +40,13 @@ public class Info implements Serializable{
 	}
 	public void setBedId(Integer bedId) {
 		this.bedId = bedId;
+	}
+	
+	public BigDecimal getAmount() {
+		return amount;
+	}
+	public void setAmount(BigDecimal amount) {
+		this.amount = amount;
 	}
 	public Integer getState() {
 		return state;

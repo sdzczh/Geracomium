@@ -165,6 +165,7 @@
                                             <th>老人姓名</th>
                                             <th>床位号</th>
                                             <th>是否缴费</th>
+                                            <th>缴费金额</th>
                                             <th>入院时间</th>
                                             <th>出院时间</th>
                                             <th>操作</th>
@@ -180,6 +181,7 @@
                                             	<c:if test="${list.state==0 }">未缴费</c:if>
                                             	<c:if test="${list.state==1 }">已缴费</c:if>
                                             </td>
+                                            <td>${list.amount }</td>
                                             <td>${list.create_time }</td>
                                             <td>${list.exit_time }</td>
                                             <td align="center">

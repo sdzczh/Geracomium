@@ -40,6 +40,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 								</select>
 							  </div>
 							  <div class="form-group">
+							    <label for="exampleInputEmail1">缴费金额</label>
+							    <input type="text" class="form-control" id="amount" placeholder="缴费金额">
+							  </div>
+							  <div class="form-group">
 							    <label for="exampleInputEmail1">入院时间</label>
 							    <input type="text" class="form-control" id="datetimepicker">
 							  </div>
@@ -62,11 +66,13 @@ $('#datetimepicker2').datetimepicker({
 function sub(){
 var userId=$("#userId").val();
 var state=$("#state").val();
+var amount=$("#amount").val();
 var datetimepicker=$("#datetimepicker").val();
 var datetimepicker2=$("#datetimepicker2").val();
 	$.post("${domain}/info/add.action", {
 		userId : userId,
 		state : state,
+		'amount' : amount,
 		'exit_time' : datetimepicker2,
 		'create_time' : datetimepicker
 		},  function(result) {
