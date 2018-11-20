@@ -58,5 +58,12 @@ public class DeviceServiceImpl implements DeviceService{
 		map.put("data", list.get(0));
 		return list;
 	}
+
+	@Override
+	public Device getByUserId(Integer id) {
+		String sql = "from Device where userId="+id;
+		List<Device> list = dao.find(sql);
+		return list == null || list.size() == 0 ? null : list.get(0);
+	}
 	
 }

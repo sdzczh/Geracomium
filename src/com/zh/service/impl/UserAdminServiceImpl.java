@@ -14,6 +14,7 @@ import com.zh.pojo.User;
 import com.zh.service.AdminService;
 import com.zh.service.UserAdminService;
 import com.zh.service.UserService;
+import com.zh.util.StrUtils;
 @SuppressWarnings("unchecked")
 @Service
 @Transactional
@@ -31,9 +32,32 @@ public class UserAdminServiceImpl implements UserAdminService{
 
 	@Override
 	public void update(User user, String new1) {
-		String sql = "update geracomiumdb.user set user.password='"+new1+"' where id="+user.getId();
-		dao.executeSql(sql);
+		String sql = "from User where id="+user.getId();
+		User user1 = (User) dao.find(sql).get(0);
+		user1.setName(user.getName());
+		user1.setSex(user.getSex());
+		user1.setAge(user.getAge());
+		user1.setPassword(new1);
+		dao.update(user1);
 		
+	}
+
+	@Override
+	public void updateInfo(User user) {
+		/*StringBuffer s = new StringBuffer();
+		s.append("update from geracomiumdb.user set ");
+		if(user.getAge() != null){
+			 s.append("age=").append(user.getAge());
+		}
+		if(!StrUtils.isBlank(user.getName())){
+			s.append(", name=").append(user.getName());
+		}
+		if(user.getSex()!=null){
+			s.append(", sex=").append(user.getSex());
+		}
+		s.append(" where id=").append(user.getId());
+		dao.executeSql(s.toString());*/
+		dao.update(user);
 	}
 	
 }

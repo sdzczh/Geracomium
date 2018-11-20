@@ -20,6 +20,8 @@ public interface DeviceService {
 	Integer update(Device device);
 
 	List<Device> getById(Integer id, Map<String, Object> map);
+
+	Device getByUserId(Integer id);
 	
 	
 }

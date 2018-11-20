@@ -69,5 +69,12 @@ public class InfoServiceImpl implements InfoService{
 		List<Info> list = dao.find(sql);
 		return list == null || list.size() == 0 ? null : list.get(0);
 	}
+
+	@Override
+	public Info getByUserId(Integer id) {
+		String sql = "from Info where userId="+id;
+		List<Info> list = dao.find(sql);
+		return list == null || list.size() == 0 ? null : list.get(0);
+	}
 	
 }

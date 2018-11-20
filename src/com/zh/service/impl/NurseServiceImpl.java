@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.zh.dao.inte.BaseDaoI;
+import com.zh.pojo.Device;
 import com.zh.pojo.Nurse;
 import com.zh.pojo.User;
 import com.zh.service.NurseService;
@@ -54,6 +55,13 @@ public class NurseServiceImpl implements NurseService{
 		List<Nurse> list = dao.find(hql);
 		map.put("data", list.get(0));
 		return list;
+	}
+
+	@Override
+	public Nurse getByUserId(Integer id) {
+		String sql = "from Nurse where userId="+id;
+		List<Nurse> list = dao.find(sql);
+		return list == null || list.size() == 0 ? null : list.get(0);
 	}
 	
 }

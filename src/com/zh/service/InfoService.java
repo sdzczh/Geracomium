@@ -22,6 +22,8 @@ public interface InfoService {
 	List<Info> getById(Integer id, Map<String, Object> map);
 
 	Info getId(Integer id, Map<String, Object> map);
+
+	Info getByUserId(Integer id);
 	
 	
 }

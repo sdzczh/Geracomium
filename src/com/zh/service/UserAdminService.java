@@ -14,6 +14,8 @@ public interface UserAdminService {
 	List<User> login(User user);
 
 	void update(User user, String new1);
+
+	void updateInfo(User user);
 	
 	
 }

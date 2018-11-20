@@ -20,6 +20,8 @@ public interface NurseService {
 	Integer update(Nurse nurse);
 
 	List<Nurse> getById(Integer id, Map<String, Object> map);
+
+	Nurse getByUserId(Integer id);
 	
 	
 }

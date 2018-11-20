@@ -51,16 +51,16 @@
             <div class="sidebar-collapse">
                 <ul class="nav" id="main-menu">
                     <li>
-                        <a href="${domain}/userAdmin/main.action"  class="active-menu"><i class="fa fa-qrcode"></i> 个人信息</a>
+                        <a href="${domain}/userAdmin/main.action"><i class="fa fa-qrcode"></i> 个人信息</a>
                     </li>
                     <li>
-                        <a href="#"><i class="fa fa-sitemap"></i> 服务管理<span class="fa arrow"></span></a>
+                        <a href="#"  class="active-menu"><i class="fa fa-sitemap"></i> 服务管理<span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level">
                             <li>
                                 <a href="${domain}/userAdmin/device.action">设备信息</a>
                             </li>
                             <li>
-                                <a href="${domain}/userAdmin/nurse.action">护理信息</a>
+                                <a href="${domain}/userAdmin/nurse.action"  class="active-menu">护理信息</a>
                             </li>
 						</ul>
                     </li>
@@ -79,30 +79,11 @@
                          <div style="padding: 20px">
  						  <form>
 							   <div class="form-group">
-							    <label for="exampleInputEmail1">ID：${data.id }</label>
-							  </div>
-							   <div class="form-group">
-							    <label for="exampleInputEmail1">姓名：${data.name }</label>
-							  </div>
-							   <div class="form-group">
-							    <label for="exampleInputEmail1">床位ID：${data.bedId }</label>
+							    <label for="exampleInputEmail1">护工姓名：${name}</label>
 							  </div>
 							  <div class="form-group">
-							    <label for="exampleInputEmail1">性别：<c:if test="${data.sex==0 }">女</c:if>
-							    									<c:if test="${data.sex==1 }">男</c:if>
-							    </label>
+							    <label for="exampleInputEmail1">护理时间：${create_time }</label>
 							  </div>
-							  <div class="form-group">
-							    <label for="exampleInputEmail1">年龄：${data.age }</label>
-							  </div>
-							  <div class="form-group">
-							    <label for="exampleInputEmail1">入住情况：${active }</label>
-							  </div>
-							  <div class="form-group">
-							    <label for="exampleInputEmail1">共计 <b>${num }</b> 天，每天床位价格为<font style="color: red">${price }</font>元，消费总金额<font style="color: red">${amount }</font>元</label>
-							  </div>
-							   <h3><a onclick="edit(${data.id})" class='btn btn-default'>修改个人信息</a></h3> 
-							  
 						</form>
 					</div>
 		</div>
