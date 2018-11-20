@@ -13,7 +13,7 @@ public interface AdminService {
 
 	List<Admin> login(Admin admin);
 
-	void update(Admin admin);
+	void update(Admin admin, String new1);
 	
 	
 }

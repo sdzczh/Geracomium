@@ -22,7 +22,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
  						  <form>
 							  <div class="form-group">
 							    <label for="exampleInputEmail1">用户名</label>
-							    <input type="password" class="form-control" id="account" placeholder="用户名">
+							    <input type="text" class="form-control" id="account" placeholder="用户名">
 							  </div>
 							  <div class="form-group">
 							    <label for="exampleInputEmail1">旧密码</label>

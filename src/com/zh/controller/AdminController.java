@@ -37,7 +37,8 @@ public class AdminController extends BaseController {
 		if(list == null || list.size() == 0){
 			return "false";
 		}
-		session.setAttribute("admin", JSON.toJSON(list.get(0)));
+		Admin admin1 = list.get(0);
+		session.setAttribute("admin", admin1);
 		return "true";
 	}
 	/**
@@ -58,12 +59,13 @@ public class AdminController extends BaseController {
 	 */
 	@ResponseBody
 	@RequestMapping("update")
-	public String update(Admin admin, String new1) {
+	public String update(Admin admin, String new1, HttpSession session) {
 		List<Admin> list=adminService.login(admin);
 		if(list == null || list.size() == 0){
 			return "false";
 		}
-		adminService.update(admin);
+		adminService.update(admin, new1);
+		session.invalidate();
 		return "true";
 	}
 	@RequestMapping("toUpdate")

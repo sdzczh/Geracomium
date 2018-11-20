@@ -29,8 +29,8 @@ public class AdminServiceImpl implements AdminService{
 	}
 
 	@Override
-	public void update(Admin admin) {
-		String sql = "update admin set password='"+admin.getPassword()+"' where account='admin'";
+	public void update(Admin admin, String new1) {
+		String sql = "update admin set admin.password='"+new1+"' where account='admin'";
 		dao.executeSql(sql);
 		
 	}

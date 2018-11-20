@@ -33,14 +33,14 @@
 	</context-param>  
 
 	<!-- 配置过滤器 -->
-<!-- 	<filter>
+ 	<filter>
 		<filter-name>SecurityServlet</filter-name>
-		<filter-class>com.ant.web.fillter.SecurityServlet</filter-class>
+		<filter-class>com.zh.web.fillter.SecurityServlet</filter-class>
 	</filter>
 	<filter-mapping>
 		<filter-name>SecurityServlet</filter-name>
 		<url-pattern>*.action</url-pattern>
-	</filter-mapping> -->
+	</filter-mapping>
 
 
 
