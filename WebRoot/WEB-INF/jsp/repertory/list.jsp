@@ -35,7 +35,7 @@
                 <!-- /.dropdown -->
                 <li class="dropdown">
                     <a class="dropdown-toggle" data-toggle="dropdown" href="#" aria-expanded="false">
-                        <i class="fa fa-user fa-fw"></i><font color="#000000"> 欢迎&nbsp;&nbsp; <b>${admin.account}</b> &nbsp;&nbsp;登录&nbsp;&nbsp;</font><i class="fa fa-caret-down"></i>
+                        <i class="fa fa-user fa-fw"></i><font color="#000000"> 欢迎登录</font><i class="fa fa-caret-down"></i>
                     </a>
                     <ul class="dropdown-menu dropdown-user">
                         <li class="divider"></li>

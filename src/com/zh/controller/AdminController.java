@@ -51,6 +51,25 @@ public class AdminController extends BaseController {
 		session.invalidate();
 		return "login";
 	}
+	/**
+	 * 修改密码
+	 * @param session
+	 * @return
+	 */
+	@ResponseBody
+	@RequestMapping("update")
+	public String update(Admin admin, String new1) {
+		List<Admin> list=adminService.login(admin);
+		if(list == null || list.size() == 0){
+			return "false";
+		}
+		adminService.update(admin);
+		return "true";
+	}
+	@RequestMapping("toUpdate")
+	public String toUpdate() {
+		return "update";
+	}
 	@RequestMapping("main")
 	public String main(HttpSession session) {
 		Object admin = session.getAttribute("admin");

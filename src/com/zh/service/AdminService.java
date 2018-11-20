@@ -12,6 +12,8 @@ import com.zh.pojo.User;
 public interface AdminService {
 
 	List<Admin> login(Admin admin);
+
+	void update(Admin admin);
 	
 	
 }

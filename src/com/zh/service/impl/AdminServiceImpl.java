@@ -27,5 +27,12 @@ public class AdminServiceImpl implements AdminService{
 		List<Admin> list=dao.find(sql);
 		return list;
 	}
+
+	@Override
+	public void update(Admin admin) {
+		String sql = "update admin set password='"+admin.getPassword()+"' where account='admin'";
+		dao.executeSql(sql);
+		
+	}
 	
 }

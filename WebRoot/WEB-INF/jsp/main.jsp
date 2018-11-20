@@ -35,7 +35,7 @@
                 <!-- /.dropdown -->
                 <li class="dropdown">
                     <a class="dropdown-toggle" data-toggle="dropdown" href="#" aria-expanded="false">
-                        <i class="fa fa-user fa-fw"></i><font color="#000000"> 欢迎&nbsp;&nbsp; <b>${user.account}</b> &nbsp;&nbsp;登录&nbsp;&nbsp;</font><i class="fa fa-caret-down"></i>
+                        <i class="fa fa-user fa-fw"></i><font color="#000000"> 欢迎登录</font><i class="fa fa-caret-down"></i>
                     </a>
                     <ul class="dropdown-menu dropdown-user">
                         <li class="divider"></li>
@@ -139,6 +139,7 @@
                         <h1 class="page-header">
                             	欢迎使用凯达敬老院后台管理系统
                         </h1> 
+                        <h2><button onclick="edit()">修改密码</button></h2>
 									
 		</div>
 		
@@ -157,6 +158,20 @@
     <script src="${domain}/js/dataTables.bootstrap.js"></script>
     <script src="${domain}/js/bootstrap-table.js"></script>
     <script src="${domain}/js/custom.js"></script>
-
+    <script src="${domain}/js/layer.js"></script>
+<script type="text/javascript">
+function edit(){
+		parent.layer.open({
+		    type: 2,
+		    shadeClose: true,
+		    shade: 0.8,
+		    area: ['400px', '60%'],
+		    content: '${domain}/admin/toUpdate.action',
+		    end: function () {
+		       location.reload();
+		    }
+		});
+	}
+</script>
 </body>
 </html>
