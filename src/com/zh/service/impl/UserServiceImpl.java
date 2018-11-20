@@ -58,5 +58,16 @@ public class UserServiceImpl implements UserService{
 		map.put("data", list.get(0));
 		return list;
 	}
+
+	@Override
+	public List<User> getUserByBedId(Integer bedId, Map<String, Object> map) {
+		String hql = "from User where bedId="+bedId;
+		List<User> list = dao.find(hql);
+		if(list == null || list.size() == 0){
+			return null;
+		}
+		map.put("data", list.get(0));
+		return list;
+	}
 	
 }

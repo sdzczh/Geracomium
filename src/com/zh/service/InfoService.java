@@ -20,6 +20,8 @@ public interface InfoService {
 	Integer update(Info info);
 
 	List<Info> getById(Integer id, Map<String, Object> map);
+
+	Info getId(Integer id, Map<String, Object> map);
 	
 	
 }

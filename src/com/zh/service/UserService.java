@@ -20,5 +20,7 @@ public interface UserService {
 	Integer update(User user);
 
 	List<User> getById(Integer id, Map<String, Object> map);
+
+	List<User> getUserByBedId(Integer bedId, Map<String, Object> map);
 	
 }

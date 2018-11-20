@@ -1,5 +1,6 @@
 package com.zh.controller;
 
+import java.math.BigDecimal;
 import java.util.List;
 import java.util.Map;
 
@@ -13,11 +14,15 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.alibaba.fastjson.JSON;
 import com.zh.base.BaseController;
 import com.zh.pojo.Admin;
+import com.zh.pojo.BedType;
 import com.zh.pojo.Info;
 import com.zh.pojo.User;
 import com.zh.service.AdminService;
+import com.zh.service.BedService;
+import com.zh.service.BedTypeService;
 import com.zh.service.InfoService;
 import com.zh.service.UserService;
+import com.zh.util.DateUtils;
 
 /**
  * 住院信息
@@ -32,6 +37,10 @@ public class InfoController extends BaseController {
 	InfoService infoService;
 	@Autowired
 	UserService userService;
+	@Autowired
+	BedTypeService bedTypeService;
+	@Autowired
+	BedService bedService;
 
 	/**
 	 * 查询
@@ -67,6 +76,11 @@ public class InfoController extends BaseController {
 		if(list == null || list.size() == 0){
 			return "false";
 		}
+		List<BedType> list1 = bedTypeService.getById(info.getBedId(), map);
+		if(list1 == null || list1.size() == 0){
+			return "error";
+		}
+		info.setBedId(list.get(0).getBedId());
 		infoService.add(info);
 		return "true";
 	}
@@ -99,5 +113,28 @@ public class InfoController extends BaseController {
 	@RequestMapping("toAdd")
 	public String toAdd() {
 		return "info/add";
+	}
+	/**
+	 * 结算页面
+	 * @return
+	 */
+	@RequestMapping("toCalcul")
+	public String toCalcul(Map<String, Object> map, Integer id) {
+		Info info = infoService.getId(id, map);
+		String create_time = info.getCreate_time();
+		String exit_time = info.getExit_time();
+		Integer num = DateUtils.differentDays(DateUtils.strToDate(create_time), DateUtils.strToDate(exit_time));
+		Integer bedId = info.getBedId();
+		BigDecimal amount = bedTypeService.getPriceByBedId(bedId);
+		List<User> list = userService.getById(info.getUserId(), map);
+		map.put("create_time", create_time);
+		map.put("exit_time", exit_time);
+		map.put("name", list.get(0).getName());
+		map.put("id", info.getUserId());
+		map.put("bedId", info.getBedId());
+		map.put("price", amount);
+		map.put("num", num);
+		map.put("amount", amount.multiply(new BigDecimal(num)));
+		return "info/calcul";
 	}
 }

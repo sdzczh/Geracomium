@@ -27,10 +27,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 							    <label for="exampleInputEmail1">姓名</label>
 							    <input type="text" class="form-control" id="userId" placeholder="老人id">
 							  </div>
-							   <div class="form-group">
+							  <!--  <div class="form-group">
 							    <label for="exampleInputEmail1">床位ID</label>
 							    <input type="text" class="form-control" id="bedId" placeholder="床位ID">
-							  </div>
+							  </div> -->
 							  <div class="form-group">
 							    <label for="exampleInputEmail1">缴费情况</label>
 							    <select class="form-control" id="state" name="state">
@@ -53,27 +53,28 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   </body>
 <script type="text/javascript">
 $('#datetimepicker').datetimepicker({
-    format: 'yyyy-mm-dd hh:ii'
+    format: 'yyyy-mm-dd hh:ii:ss'
 });
 $('#datetimepicker2').datetimepicker({
-    format: 'yyyy-mm-dd hh:ii'
+    format: 'yyyy-mm-dd hh:ii:ss'
 });
 
 function sub(){
 var userId=$("#userId").val();
-var bedId=$("#bedId").val();
 var state=$("#state").val();
 var datetimepicker=$("#datetimepicker").val();
 var datetimepicker2=$("#datetimepicker2").val();
 	$.post("${domain}/info/add.action", {
 		userId : userId,
-		bedId : bedId,
 		state : state,
 		'exit_time' : datetimepicker2,
 		'create_time' : datetimepicker
 		},  function(result) {
 		if(result == 'false'){
 			layer.msg('老人编号输入有误，请重新输入!',{icon:2,time:2000});
+			return;
+		}else if(result == 'error'){
+			layer.msg('床位编号输入有误，请重新输入!',{icon:2,time:2000});
 			return;
 		}else
 			layer.msg('添加成功!',{icon:1,time:2000});

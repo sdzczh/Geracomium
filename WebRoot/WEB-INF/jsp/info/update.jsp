@@ -53,10 +53,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   </body>
 <script type="text/javascript">
 $('#datetimepicker').datetimepicker({
-    format: 'yyyy-mm-dd hh:ii'
+    format: 'yyyy-mm-dd hh:ii:ss'
 });
 $('#datetimepicker2').datetimepicker({
-    format: 'yyyy-mm-dd hh:ii'
+    format: 'yyyy-mm-dd hh:ii:ss'
 });
 
 function sub(){

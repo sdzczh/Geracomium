@@ -1,5 +1,6 @@
 package com.zh.service.impl;
 
+import java.math.BigDecimal;
 import java.util.List;
 import java.util.Map;
 
@@ -55,6 +56,18 @@ public class BedTypeServiceImpl implements BedTypeService{
 		}
 		map.put("data", list.get(0));
 		return list;
+	}
+
+	@Override
+	public BigDecimal getPriceByBedId(Integer bedId) {
+		String sql = "SELECT price FROM bed b LEFT JOIN bed_type bt ON b.type=bt.id WHERE b.id="+bedId;
+		List<Map<String, Object>> list = (List<Map<String, Object>>) dao.findBySql(sql);
+		if(list == null || list.size() == 0){
+			return null;
+		}
+		Map<String, Object> map = list.get(0);
+		BigDecimal amount = new BigDecimal(map.get("price").toString());
+		return amount;
 	}
 	
 }

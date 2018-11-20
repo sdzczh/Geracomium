@@ -183,8 +183,9 @@
                                             <td>${list.create_time }</td>
                                             <td>${list.exit_time }</td>
                                             <td align="center">
-        <a style="text-decoration:none" onclick="edit(${list.id})" class='btn btn-default' title="编辑">编辑</a>
-		<a style="text-decoration:none" onClick="del(${list.id})" href="javascript:;" class='btn btn-danger' title="删除">删除</a>
+ <c:if test="${list.state==0 }">       <a style="text-decoration:none" onclick="edit(${list.id})" class='btn btn-default' title="编辑">编辑</a>
+		<a style="text-decoration:none" onClick="calcul(${list.id})" href="javascript:;" class='btn btn-info' title="删除">结算</a></c:if>
+		<a style="text-decoration:none" onClick="del(${list.id})" href="javascript:;" class='btn btn-danger' title="删除">删除</a> 
 											</td>
                                         </tr>
                                     </c:forEach>
@@ -253,6 +254,18 @@
 		    shade: 0.8,
 		    area: ['600px', '60%'],
 		    content: '${domain}/info/toAdd.action',
+		    end: function () {
+		       location.reload();
+		    }
+		});
+	}
+	function calcul(id){
+		parent.layer.open({
+		    type: 2,
+		    shadeClose: true,
+		    shade: 0.8,
+		    area: ['600px', '40%'],
+		    content: '${domain}/info/toCalcul.action?id='+id,
 		    end: function () {
 		       location.reload();
 		    }

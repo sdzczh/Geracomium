@@ -1,5 +1,6 @@
 package com.zh.service;
 
+import java.math.BigDecimal;
 import java.util.List;
 import java.util.Map;
 
@@ -20,5 +21,7 @@ public interface BedTypeService {
 	Integer update(BedType bedType);
 
 	List<BedType> getById(Integer id, Map<String, Object> map);
+
+	BigDecimal getPriceByBedId(Integer bedId);
 
 }
