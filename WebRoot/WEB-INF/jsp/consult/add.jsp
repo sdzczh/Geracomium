@@ -24,6 +24,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 							    <label for="exampleInputEmail1">姓名</label>
 							    <input type="text" class="form-control" id="name" placeholder="姓名">
 							  </div>
+							   <div class="form-group">
+							    <label for="exampleInputEmail1">手机号</label>
+							    <input type="text" class="form-control" id="phone" placeholder="手机号">
+							  </div>
 							  <div class="form-group">
 							    <label for="exampleInputEmail1">咨询内容</label>
 							    <textarea id="content" class="form-control"></textarea>
@@ -35,10 +39,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <script type="text/javascript">
 function sub(){
 var id=$("#id").val();
+var phone=$("#phone").val();
 var name=$("#name").val();
 var content=$("#content").val();
 	$.post("${domain}/consult/add.action", {
 		id : id,
+		'phone' : phone,
 		'name' : name,
 		'content' : content,
 		},  function(result) {

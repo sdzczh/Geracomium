@@ -25,6 +25,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 							    <input type="text" class="form-control" id="name" placeholder="帐号" value="${data.name}">
 							  </div>
 							  <div class="form-group">
+							    <label for="exampleInputEmail1">手机号</label>
+							    <input type="text" class="form-control" id="phone" placeholder="手机号" value="${data.phone}">
+							  </div>
+							  <div class="form-group">
 							    <label for="exampleInputEmail1">咨询内容</label>
 							    <textarea id="content" class="form-control">${data.content }</textarea>
 							  </div>
@@ -36,10 +40,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 function sub(){
 var id=$("#id").val();
 var name=$("#name").val();
+var phone=$("#phone").val();
 var content=$("#content").val();
 	$.post("${domain}/consult/update.action", {
 		id : id,
 		'name' : name,
+		'phone' : phone,
 		'content' : content,
 		},  function(result) {
 		layer.msg('修改成功!',{icon:1,time:2000});

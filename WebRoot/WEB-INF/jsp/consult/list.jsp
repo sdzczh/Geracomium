@@ -163,6 +163,7 @@
                                         <tr>
                                             <th>编号</th>
                                             <th>访客姓名</th>
+                                            <th>手机号</th>
                                             <th>咨询内容</th>
                                             <th>创建时间</th>
                                             <th>操作</th>
@@ -173,6 +174,7 @@
                                         <tr class="odd gradeX">
                                             <td>${list.id }</td>
                                             <td>${list.name }</td>
+                                            <td>${list.phone }</td>
                                             <td>${list.content }</td>
                                             <td>${list.create_time }</td>
                                             <td align="center">

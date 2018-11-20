@@ -17,6 +17,7 @@ public class Consult implements Serializable{
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Integer id;
 	private String name;
+	private String phone;
 	private String content;
 	private String create_time;
 	public Integer getId() {
@@ -30,6 +31,13 @@ public class Consult implements Serializable{
 	}
 	public void setName(String name) {
 		this.name = name;
+	}
+	
+	public String getPhone() {
+		return phone;
+	}
+	public void setPhone(String phone) {
+		this.phone = phone;
 	}
 	public String getContent() {
 		return content;

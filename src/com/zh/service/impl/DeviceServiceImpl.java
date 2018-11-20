@@ -38,12 +38,15 @@ public class DeviceServiceImpl implements DeviceService{
 
 	@Override
 	public Integer add(Device device) {
-		device.setCreate_time(DateUtils.getCurrentTimeStr());
+		if(device.getState() == 1){
+			device.setCreate_time(DateUtils.getCurrentTimeStr());
+		}
 		return (Integer) dao.save(device);
 	}
 
 	@Override
 	public Integer update(Device device) {
+		device.setCreate_time(DateUtils.getCurrentTimeStr());
 		dao.update(device);
 		return 0;
 	}
